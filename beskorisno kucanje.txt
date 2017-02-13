@@ -1,0 +1,5 @@
+1. Login korisnika
+2. pocetna stranica gde se nalazi trenutna stanja racuna (mnozina) ulogovankog klijenta
+3. treba da postoji mogucnost pregleda istorije placanja za zadati vremenski interval (od do)
+4. u prozoru za placanja treba da postoji lista racuna ulogovankog klijenta koji on selektuje i zatim izvrsava placanja sa selektovanog racuna.
+5. neophodna validacija nad svim poljima svih formi
