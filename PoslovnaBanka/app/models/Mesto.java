@@ -1,9 +1,17 @@
 package models;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 
+@Entity
 public class Mesto{
 
-    private int postanskiBroj;
-    private String naziv;
+    @Column(unique=true, nullable=false)
+    public int postanskiBroj;
+    @Column(unique=true, nullable=false)
+    public String naziv;
 
-    //fali veza ka Klijentu
+    @OneToMany
+    public List<Klijent> klijenti;
+
+
 }
