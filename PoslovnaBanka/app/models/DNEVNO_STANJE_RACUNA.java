@@ -1,15 +1,17 @@
+package models;
+
 /***********************************************************************
  * Module:  DNEVNO_STANJE_RACUNA.java
  * Author:  Aleksa
  * Purpose: Defines the Class DNEVNO_STANJE_RACUNA
  ***********************************************************************/
-import java.util.Collection;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import play.db.jpa.Model;
+import java.util.Collection;
+import java.util.Date;
+
 @Entity
 public class DNEVNO_STANJE_RACUNA {
    @Column(nullable = false, unique = true)

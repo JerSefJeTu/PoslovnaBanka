@@ -2,6 +2,4 @@
 
 require:
     - play
-    - mysql -> mysql-connector-java 5.1.40
-    - jawax -> javax.persistence
-    - play -> db 1.1.1
+    - javax -> persistence 2.0

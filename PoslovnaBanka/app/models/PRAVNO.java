@@ -1,3 +1,7 @@
+package models;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 /***********************************************************************
  * Module:  PRAVNO.java
  * Author:  Aleksa

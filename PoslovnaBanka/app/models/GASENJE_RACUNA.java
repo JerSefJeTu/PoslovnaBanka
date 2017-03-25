@@ -1,9 +1,9 @@
-import java.util.Date;
+package models;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
-import play.db.jpa.Model;
+import java.util.Date;
 /***********************************************************************
  * Module:  GASENJE_RACUNA.java
  * Author:  Aleksa

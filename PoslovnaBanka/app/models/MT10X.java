@@ -1,10 +1,11 @@
-import java.util.Collection;
-import java.util.Date;
+package models;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import play.db.jpa.Model;
+import java.util.Collection;
+import java.util.Date;
 
 /***********************************************************************
  * Module:  MT10X.java
