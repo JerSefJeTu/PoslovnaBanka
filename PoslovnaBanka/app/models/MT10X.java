@@ -1,5 +1,7 @@
 package models;
 
+import play.db.jpa.Model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -13,7 +15,7 @@ import java.util.Date;
  * Purpose: Defines the Class MT10X
  ***********************************************************************/
 @Entity
-public class MT10X {
+public class MT10X extends Model {
    @Column(nullable = false, unique = true)
    public int ID_PORUKE;
    @Column(nullable = false)
@@ -32,7 +34,7 @@ public class MT10X {
    public String OBRACUNSKI_RACUN2;
    @Column(nullable = false)
    public boolean OBRADJENO;
-   @OneToMany(mappedBy = "MT10X")
+   @OneToMany(mappedBy = "mT10X")
    public java.util.Collection<NALOG> nALOG;
    @ManyToOne
    public BANKA banka;

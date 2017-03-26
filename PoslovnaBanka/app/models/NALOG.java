@@ -1,5 +1,7 @@
 package models;
 
+import play.db.jpa.Model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -10,7 +12,7 @@ import java.util.Date;
  * Purpose: Defines the Class NALOG
  ***********************************************************************/
 @Entity
-public class NALOG {
+public class NALOG extends Model {
    @Column(nullable = false, unique = true)
    public int ID_NALOGA;
    @Column(nullable = false, unique = true)

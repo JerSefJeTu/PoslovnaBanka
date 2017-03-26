@@ -1,5 +1,7 @@
 package models;
 
+import play.db.jpa.Model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -10,14 +12,14 @@ import java.util.Collection;
  * Purpose: Defines the Class MESTO
  ***********************************************************************/
 @Entity
-public class MESTO {
+public class MESTO extends Model {
     @Column(nullable = false, unique = true)
     public double ID_MESTA;
     @Column(nullable = false, unique = true)
     public double POSTANSKI_BROJ;
     @Column(nullable = false)
     public String NAZIV;
-    @OneToMany(mappedBy = "MESTO")
+    @OneToMany(mappedBy = "mESTO")
     public java.util.Collection<KLIJENT> kLIJENT;
 
    /** @pdGenerated default getter */

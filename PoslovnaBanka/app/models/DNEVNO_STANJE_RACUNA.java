@@ -5,6 +5,8 @@ package models;
  * Author:  Aleksa
  * Purpose: Defines the Class DNEVNO_STANJE_RACUNA
  ***********************************************************************/
+import play.db.jpa.Model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -13,7 +15,7 @@ import java.util.Collection;
 import java.util.Date;
 
 @Entity
-public class DNEVNO_STANJE_RACUNA {
+public class DNEVNO_STANJE_RACUNA extends Model {
    @Column(nullable = false, unique = true)
    public int ID_DNEVNOG_STANJA;
    @Column(nullable = false)
@@ -26,7 +28,7 @@ public class DNEVNO_STANJE_RACUNA {
    public double STANJE_;
    @Column(nullable = false)
    public double NOVO_STANJE;
-   @OneToMany(mappedBy = "DNEVNO_STANJE_RACUNA")
+   @OneToMany(mappedBy = "dNEVNO_STANJE_RACUNA")
    public java.util.Collection<NALOG> nALOG;
    @ManyToOne
    public RACUN rACUN;

@@ -1,4 +1,6 @@
 package models;
+import play.db.jpa.Model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -8,7 +10,7 @@ import javax.persistence.ManyToOne;
  * Purpose: Defines the Class PRAVNO
  ***********************************************************************/
 @Entity
-public class PRAVNO {
+public class PRAVNO extends Model {
    @Column(nullable = false, unique = true)
    public double ID_MESTA;
    @Column(nullable = false)

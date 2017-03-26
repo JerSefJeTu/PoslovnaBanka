@@ -5,11 +5,14 @@ package models;
  * Author:  Aleksa
  * Purpose: Defines the Class FIZICKO
  ***********************************************************************/
+
+import play.db.jpa.Model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 @Entity
-public class FIZICKO {
+public class FIZICKO extends Model {
     @Column(nullable = false)
     public double ID_MESTA;
     @Column(nullable = false)

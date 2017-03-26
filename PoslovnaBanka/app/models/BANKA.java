@@ -1,5 +1,7 @@
 package models;
 
+import play.db.jpa.Model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -10,7 +12,7 @@ import java.util.Collection;
  * Purpose: Defines the Class BANKA
  ***********************************************************************/
 @Entity
-public class BANKA {
+public class BANKA extends Model {
     @Column(nullable = false, unique = true)
     public int ID_BANKE;
     @Column(nullable = false, unique = true)
@@ -27,11 +29,11 @@ public class BANKA {
     public String SWIFT_KOD;
     @Column(nullable = false, unique = true)
     public String OBRACUNSKI_RACUN;
-    @OneToMany(mappedBy = "BANKA")
+    @OneToMany(mappedBy = "bANKA")
     public java.util.Collection<RACUN> rACUN;
-    @OneToMany(mappedBy = "BANKA")
+    @OneToMany(mappedBy = "banka")
     public java.util.Collection<MT10X> mt10x;
-    @OneToMany(mappedBy = "BANKA")
+    @OneToMany(mappedBy = "banka")
     public java.util.Collection<MT10X> mt10x2;
 
     public BANKA() {

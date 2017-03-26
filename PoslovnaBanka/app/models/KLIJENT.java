@@ -1,5 +1,7 @@
 package models;
 
+import play.db.jpa.Model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -11,7 +13,7 @@ import java.util.Collection;
  * Purpose: Defines the Class KLIJENT
  ***********************************************************************/
 @Entity
-public class KLIJENT {
+public class KLIJENT extends Model {
     @Column(nullable = false, unique = true)
     public int ID_KLIJENTA;
     @Column(nullable = false, unique = true)
@@ -23,7 +25,7 @@ public class KLIJENT {
     @Column(nullable = false, unique = true)
     public String E_MAIL;
 
-    @OneToMany(mappedBy = "KLIJENT")
+    @OneToMany(mappedBy = "kLIJENT")
     public java.util.Collection<RACUN> rACUN;
     @ManyToOne
     public PRAVNO pRAVNO;

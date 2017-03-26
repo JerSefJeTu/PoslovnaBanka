@@ -1,5 +1,7 @@
 package models;
 
+import play.db.jpa.Model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -11,14 +13,14 @@ import java.util.Collection;
  * Purpose: Defines the Class RACUN
  ***********************************************************************/
 @Entity
-public class RACUN {
+public class RACUN extends Model {
    @Column(nullable = false, unique = true)
    public String BROJ_RACUNA;
    @Column(nullable = false, unique = true)
    public double ID_RACUNA;
    @Column(nullable = false)
    public GASENJE_RACUNA gASENJE_RACUNA;
-   @OneToMany(mappedBy = "RACUN")
+   @OneToMany(mappedBy = "rACUN")
    public java.util.Collection<DNEVNO_STANJE_RACUNA> dNEVNO_STANJE_RACUNA;
    @ManyToOne
    public KLIJENT kLIJENT;

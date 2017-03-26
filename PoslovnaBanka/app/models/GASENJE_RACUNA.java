@@ -1,5 +1,7 @@
 package models;
 
+import play.db.jpa.Model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -10,7 +12,7 @@ import java.util.Date;
  * Purpose: Defines the Class GASENJE_RACUNA
  ***********************************************************************/
 @Entity
-public class GASENJE_RACUNA {
+public class GASENJE_RACUNA extends Model {
    @Column(nullable = false, unique = true)
    public double ID_GASENJA;
    @Column(nullable = false)
