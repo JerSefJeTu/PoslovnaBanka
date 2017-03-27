@@ -13,6 +13,7 @@ import java.util.Collection;
  ***********************************************************************/
 @Entity
 public class BANKA extends Model {
+
     @Column(nullable = false, unique = true)
     public int ID_BANKE;
     @Column(nullable = false, unique = true)

@@ -17,7 +17,8 @@ public class Mesta extends Controller {
             mode = "edit";
         render(mesta, mode);
     }
-    public static void add(@Required String nazivMesta, double postanskiBroj) {
+    public static void add(@Required String nazivMesta, int postanskiBroj) {
+        System.out.println(nazivMesta+" "+postanskiBroj);
         if(validation.hasErrors()) {
             for(Error error : validation.errors()) {
                 System.out.println(error.message());
@@ -38,7 +39,7 @@ public class Mesta extends Controller {
         String mode = "edit";
         renderTemplate("Mesta/show.html", mesta, mode);
     }
-    public static void edit(@Required String nazivMesta, double postanskiBroj, long id){
+    public static void edit(@Required String nazivMesta, int postanskiBroj, long id){
         MESTO mesto = MESTO.findById(id);
         mesto.NAZIV=nazivMesta;
         mesto.POSTANSKI_BROJ = postanskiBroj;
