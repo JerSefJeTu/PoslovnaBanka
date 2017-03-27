@@ -32,31 +32,6 @@ public class PRAVNO extends Model {
    @ManyToOne
    public KLIJENT kLIJENT;
 
-
-   /** @pdGenerated default parent getter */
-   public DELATNOST getDELATNOST() {
-      return dELATNOST;
-   }
-   
-   /** @pdGenerated default parent setter
-     * @param newDELATNOST */
-   public void setDELATNOST(DELATNOST newDELATNOST) {
-      if (this.dELATNOST == null || !this.dELATNOST.equals(newDELATNOST))
-      {
-         if (this.dELATNOST != null)
-         {
-            DELATNOST oldDELATNOST = this.dELATNOST;
-            this.dELATNOST = null;
-            oldDELATNOST.removePRAVNO(this);
-         }
-         if (newDELATNOST != null)
-         {
-            this.dELATNOST = newDELATNOST;
-            this.dELATNOST.addPRAVNO(this);
-         }
-      }
-   }
-
    public PRAVNO() {
    }
 

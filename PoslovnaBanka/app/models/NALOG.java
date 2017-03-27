@@ -42,54 +42,6 @@ public class NALOG extends Model {
    @ManyToOne
    public MT10X mT10X;
 
-
-   /** @pdGenerated default parent getter */
-   public DNEVNO_STANJE_RACUNA getDNEVNO_STANJE_RACUNA() {
-      return dNEVNO_STANJE_RACUNA;
-   }
-   
-   /** @pdGenerated default parent setter
-     * @param newDNEVNO_STANJE_RACUNA */
-   public void setDNEVNO_STANJE_RACUNA(DNEVNO_STANJE_RACUNA newDNEVNO_STANJE_RACUNA) {
-      if (this.dNEVNO_STANJE_RACUNA == null || !this.dNEVNO_STANJE_RACUNA.equals(newDNEVNO_STANJE_RACUNA))
-      {
-         if (this.dNEVNO_STANJE_RACUNA != null)
-         {
-            DNEVNO_STANJE_RACUNA oldDNEVNO_STANJE_RACUNA = this.dNEVNO_STANJE_RACUNA;
-            this.dNEVNO_STANJE_RACUNA = null;
-            oldDNEVNO_STANJE_RACUNA.removeNALOG(this);
-         }
-         if (newDNEVNO_STANJE_RACUNA != null)
-         {
-            this.dNEVNO_STANJE_RACUNA = newDNEVNO_STANJE_RACUNA;
-            this.dNEVNO_STANJE_RACUNA.addNALOG(this);
-         }
-      }
-   }
-   /** @pdGenerated default parent getter */
-   public MT10X getMT10X() {
-      return mT10X;
-   }
-   
-   /** @pdGenerated default parent setter
-     * @param newMT10X */
-   public void setMT10X(MT10X newMT10X) {
-      if (this.mT10X == null || !this.mT10X.equals(newMT10X))
-      {
-         if (this.mT10X != null)
-         {
-            MT10X oldMT10X = this.mT10X;
-            this.mT10X = null;
-            oldMT10X.removeNALOG(this);
-         }
-         if (newMT10X != null)
-         {
-            this.mT10X = newMT10X;
-            this.mT10X.addNALOG(this);
-         }
-      }
-   }
-
    public NALOG() {
    }
 
