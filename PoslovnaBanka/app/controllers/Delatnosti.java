@@ -5,6 +5,7 @@ import play.data.validation.Error;
 import play.data.validation.Required;
 import play.mvc.Controller;
 import java.util.List;
+
 /**
  * Created by Djordje on 3/27/2017.
  */
@@ -37,17 +38,18 @@ public class Delatnosti extends Controller {
         String mode = "edit";
         renderTemplate("Delatnosti/show.html", delatnosti, mode);
     }
-    /*public static void edit(@Required String nazivMesta,Long preduzeca,Long poslovniPartner, long id){
-        Mesto mesto = Mesto.findById(id);
-        mesto.nazivMesta=nazivMesta;
-        mesto.save();
+    public static void edit(@Required String nazivDelatnosti, int sifraDelatnosti, long id){
+        DELATNOST delatnost = DELATNOST.findById(id);
+        delatnost.NAZIV_DELATNOSTI=nazivDelatnosti;
+        delatnost.SIFRA_DELATNOSTI=sifraDelatnosti;
+        delatnost.save();
         show("");
     }
     public static void delete(long id){
-        Mesto mesto = Mesto.findById(id);
+        DELATNOST delatnost = DELATNOST.findById(id);
         System.out.println(id);
-        mesto.delete();
+        delatnost.delete();
         show("");
-    }*/
+    }
 
 }
