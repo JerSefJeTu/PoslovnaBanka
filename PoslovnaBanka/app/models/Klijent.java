@@ -26,6 +26,10 @@ public class Klijent extends Model {
     public String fax;
     @Column(nullable = false)
     public String eMail;
+    @Column(nullable = false)
+    public String username;
+    @Column(nullable = false)
+    public String password;
 
     @ManyToOne
     public Mesto mesto;
