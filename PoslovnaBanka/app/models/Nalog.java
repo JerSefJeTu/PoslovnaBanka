@@ -35,9 +35,12 @@ public class Nalog extends Model {
    public String svrhaPlacanja;
    @Column(nullable = false)
    public Date datumNaloga;
-//   @ManyToOne
-//   public DnevnoStanjeRacuna dnevnoStanjeRacuna;
 
+   @ManyToOne
+   public DnevnoStanjeRacuna dnevnoStanjeRacuna;
+
+   @ManyToOne
+   public MT10X mt10x;
 
    public Nalog() {
    }

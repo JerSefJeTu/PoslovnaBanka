@@ -4,9 +4,8 @@ import play.db.jpa.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import java.util.Collection;
+import java.util.List;
 
 /***********************************************************************
  * Module:  Mesto.java
@@ -20,6 +19,12 @@ public class Mesto extends Model {
     public int postanskiBroj;
     @Column(nullable = false)
     public String naziv;
+
+    @OneToMany(mappedBy = "mesto")
+    public List<Klijent> listaKlijenata;
+
+    @OneToMany(mappedBy = "mesto")
+    public List<Banka> listaBanki;
 
     public Mesto() {
     }

@@ -6,8 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
 import java.util.Collection;
 /***********************************************************************
  * Module:  Klijent.java
@@ -28,8 +26,8 @@ public class Klijent extends Model {
     public String fax;
     @Column(nullable = false)
     public String eMail;
-    @Column(nullable = false)
-    @OneToOne
+
+    @ManyToOne
     public Mesto mesto;
 
 

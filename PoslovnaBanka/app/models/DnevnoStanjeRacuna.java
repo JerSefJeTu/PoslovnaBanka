@@ -9,9 +9,6 @@ import play.db.jpa.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.Collection;
@@ -30,7 +27,7 @@ public class DnevnoStanjeRacuna extends Model {
    public double stanje;
    @Column(nullable = false)
    public double novoStanje;
-   @OneToMany(mappedBy = "dnevnoStanjeracuna")
+   @OneToMany(mappedBy = "dnevnoStanjeRacuna")
    public java.util.Collection<Nalog> nalog;
    @ManyToOne
    public Racun racun;

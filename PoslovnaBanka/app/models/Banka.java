@@ -4,13 +4,7 @@ import play.db.jpa.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
-import java.util.Collection;
+import javax.persistence.ManyToOne;
 /***********************************************************************
  * Module:  Banka.java
  * Author:  Aleksa
@@ -33,8 +27,8 @@ public class Banka extends Model {
     public String swiftKod;
     @Column(nullable = false, unique = true)
     public String obracunskiRacun;
-    @Column(nullable = false)
-    @OneToOne
+
+    @ManyToOne
     public Mesto mesto;
 	
     public Banka(){

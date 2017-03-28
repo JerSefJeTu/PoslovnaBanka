@@ -21,6 +21,9 @@ public class Racun extends Model {
    @ManyToOne
    public Banka banka;
 
+   @ManyToOne
+   public Klijent klijent;
+
    public Racun() {
    }
 

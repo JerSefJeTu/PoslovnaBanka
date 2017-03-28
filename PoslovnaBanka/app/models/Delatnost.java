@@ -4,11 +4,7 @@ import play.db.jpa.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.Collection;
+
 /***********************************************************************
  * Module:  Delatnost.java
  * Author:  Aleksa
@@ -21,6 +17,8 @@ public class Delatnost extends Model {
    public int sifraDelatnosti;
    @Column(nullable = false, unique = true)
    public String nazivDelatnosti;
+   //@OneToMany(mappedBy = "delatnost")
+   //public List<Delatnost> listaDelatnosti;
 
 
    public Delatnost() {

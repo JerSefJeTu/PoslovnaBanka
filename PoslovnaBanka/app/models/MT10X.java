@@ -34,6 +34,8 @@ public class MT10X extends Model {
    public boolean obradjeno;
    @OneToMany(mappedBy = "mt10x")
    public java.util.Collection<Nalog> nalog;
+   @ManyToOne
+   public Clearing clearing;
 
    public MT10X() {
    }
