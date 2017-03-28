@@ -10,25 +10,26 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.Collection;
 /***********************************************************************
- * Module:  DELATNOST.java
+ * Module:  Delatnost.java
  * Author:  Aleksa
- * Purpose: Defines the Class DELATNOST
+ * Purpose: Defines the Class Delatnost
  ***********************************************************************/
 @Entity
-public class DELATNOST extends Model {
+public class Delatnost extends Model {
 
    @Column(nullable = false, unique = true)
-   public int SIFRA_DELATNOSTI;
+   public int sifraDelatnosti;
    @Column(nullable = false, unique = true)
-   public String NAZIV_DELATNOSTI;
+   public String nazivDelatnosti;
 
 
-   public DELATNOST() {
+   public Delatnost() {
    }
 
-   public DELATNOST(int SIFRA_DELATNOSTI, String NAZIV_DELATNOSTI, Collection<PRAVNO> pRAVNO) {
-      this.SIFRA_DELATNOSTI = SIFRA_DELATNOSTI;
-      this.NAZIV_DELATNOSTI = NAZIV_DELATNOSTI;
+   public Delatnost(int sifraDelatnosti, String nazivDelatnosti) {
+	   super();
+      this.sifraDelatnosti = sifraDelatnosti;
+      this.nazivDelatnosti = nazivDelatnosti;
    }
 
    

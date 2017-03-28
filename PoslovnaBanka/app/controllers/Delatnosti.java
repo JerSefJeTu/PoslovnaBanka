@@ -1,6 +1,6 @@
 package controllers;
 
-import models.DELATNOST;
+import models.Delatnost;
 import play.data.validation.Error;
 import play.data.validation.Required;
 import play.mvc.Controller;
@@ -12,7 +12,7 @@ import java.util.List;
 public class Delatnosti extends Controller {
 
     public static void show(String mode){
-        List<DELATNOST> delatnosti = DELATNOST.findAll();
+        List<Delatnost> delatnosti = Delatnost.findAll();
         if (mode == null || mode.equals(""))
             mode = "edit";
         render(delatnosti, mode);
@@ -25,28 +25,28 @@ public class Delatnosti extends Controller {
             validation.keep();
             show("add");
         }else {
-            DELATNOST delatnost =new DELATNOST();
-            delatnost.NAZIV_DELATNOSTI = nazivDelatnosti;
-            delatnost.SIFRA_DELATNOSTI = sifraDelatnosti;
+            Delatnost delatnost =new Delatnost();
+            delatnost.nazivDelatnosti = nazivDelatnosti;
+            delatnost.sifraDelatnosti = sifraDelatnosti;
             delatnost.save();
             validation.keep();
             show("add");
         }
     }
     public static void filter(@Required String nazivDelatnosti){
-        List<DELATNOST> delatnosti = DELATNOST.find("byNAZIV_DELATNOSTILike", "%"+ nazivDelatnosti +"%").fetch();
+        List<Delatnost> delatnosti = Delatnost.find("byNAZIV_DELATNOSTILike", "%"+ nazivDelatnosti +"%").fetch();
         String mode = "edit";
         renderTemplate("Delatnosti/show.html", delatnosti, mode);
     }
     public static void edit(@Required String nazivDelatnosti, int sifraDelatnosti, long id){
-        DELATNOST delatnost = DELATNOST.findById(id);
-        delatnost.NAZIV_DELATNOSTI=nazivDelatnosti;
-        delatnost.SIFRA_DELATNOSTI=sifraDelatnosti;
+        Delatnost delatnost = Delatnost.findById(id);
+        delatnost.nazivDelatnosti=nazivDelatnosti;
+        delatnost.sifraDelatnosti=sifraDelatnosti;
         delatnost.save();
         show("");
     }
     public static void delete(long id){
-        DELATNOST delatnost = DELATNOST.findById(id);
+        Delatnost delatnost = Delatnost.findById(id);
         System.out.println(id);
         delatnost.delete();
         show("");

@@ -9,23 +9,24 @@ import javax.persistence.OneToMany;
 import java.util.Collection;
 
 /***********************************************************************
- * Module:  MESTO.java
+ * Module:  Mesto.java
  * Author:  Aleksa
- * Purpose: Defines the Class MESTO
+ * Purpose: Defines the Class Mesto
  ***********************************************************************/
 @Entity
-public class MESTO extends Model {
+public class Mesto extends Model {
 
     @Column(nullable = false, unique = true)
-    public int POSTANSKI_BROJ;
+    public int postanskiBroj;
     @Column(nullable = false)
-    public String NAZIV;
+    public String naziv;
 
-    public MESTO() {
+    public Mesto() {
     }
 
-    public MESTO(int POSTANSKI_BROJ, String NAZIV, Collection<KLIJENT> kLIJENT) {
-        this.POSTANSKI_BROJ = POSTANSKI_BROJ;
-        this.NAZIV = NAZIV;
+    public Mesto(int postanskiBroj, String naziv) {
+        super();
+    	this.postanskiBroj = postanskiBroj;
+        this.naziv = naziv;
     }
 }

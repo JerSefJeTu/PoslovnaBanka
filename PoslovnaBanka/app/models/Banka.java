@@ -12,45 +12,45 @@ import javax.persistence.OneToOne;
 
 import java.util.Collection;
 /***********************************************************************
- * Module:  BANKA.java
+ * Module:  Banka.java
  * Author:  Aleksa
- * Purpose: Defines the Class BANKA
+ * Purpose: Defines the Class Banka
  ***********************************************************************/
 @Entity
-public class BANKA extends Model {
+public class Banka extends Model {
 
     @Column(nullable = false, unique = true)
-    public double SIFRA_BANKE;
+    public double sifraBanke;
     @Column(nullable = false, unique = true)
-    public String NAZIV_BANKE;
+    public String nazivBanke;
     @Column(nullable = false, unique = true)
-    public String ADRESA_BANKE;
+    public String adresaBanke;
     @Column(nullable = false, unique = true)
-    public String TELEFON_BANKE;
+    public String telefonBanke;
     @Column(nullable = false, unique = true)
-    public double PIB;
+    public int PIB;
     @Column(nullable = false, unique = true)
-    public String SWIFT_KOD;
+    public String swiftKod;
     @Column(nullable = false, unique = true)
-    public String OBRACUNSKI_RACUN;
+    public String obracunskiRacun;
     @Column(nullable = false)
-    @OneToOne //dovrsi vezu
-    public MESTO mesto;
+    @OneToOne
+    public Mesto mesto;
 	
-    public BANKA(){
+    public Banka(){
     	
     }
     
-    public BANKA(int iD_BANKE, double sIFRA_BANKE, String nAZIV_BANKE, String aDRESA_BANKE, String tELEFON_BANKE,
-			double pIB, String sWIFT_KOD, String oBRACUNSKI_RACUN) {
+    public Banka(double sifraBanke, String nazivBanke, String adresaBanke, String telefonBanke,
+			int PIB, String swiftKod, String obracunskiRacun) {
 		super();
-		SIFRA_BANKE = sIFRA_BANKE;
-		NAZIV_BANKE = nAZIV_BANKE;
-		ADRESA_BANKE = aDRESA_BANKE;
-		TELEFON_BANKE = tELEFON_BANKE;
-		PIB = pIB;
-		SWIFT_KOD = sWIFT_KOD;
-		OBRACUNSKI_RACUN = oBRACUNSKI_RACUN;
+		this.sifraBanke = sifraBanke;
+		this.nazivBanke = nazivBanke;
+		this.adresaBanke = adresaBanke;
+		this.telefonBanke = telefonBanke;
+		this.PIB = PIB;
+		this.swiftKod = swiftKod;
+		this.obracunskiRacun = obracunskiRacun;
 	}
 
 }
