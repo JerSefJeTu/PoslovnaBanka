@@ -1,0 +1,23 @@
+# Inicijalni podaci za aplikaciju, popunite po volji
+# Koristeci dole navedenu sintaksu
+
+--- # Mesto
+Mesto(mesto1):
+    naziv: Novi Sad
+    postanskiBroj: 21000
+Mesto(mesto2):
+    naziv: Beograd
+    postanskiBroj: 11000
+Mesto(mesto3):
+    naziv: Banja Luka
+    postanskiBroj: 78000
+
+--- # Klijent
+Klijent(klijent):
+    adresa: Djordja Servickog 1
+    telefon: 0654588055
+    fax: faxFax
+    eMail: stefan.kajkutsf@gmail.com
+    username: stek
+    password: 12345
+    mesto: *id002
