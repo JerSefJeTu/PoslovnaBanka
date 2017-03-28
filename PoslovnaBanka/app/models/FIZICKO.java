@@ -6,44 +6,38 @@ package models;
  * Purpose: Defines the Class FIZICKO
  ***********************************************************************/
 
-import play.db.jpa.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 @Entity
-public class FIZICKO extends Model {
-    @Column(nullable = false)
-    public double ID_MESTA;
-    @Column(nullable = false)
-    public String ADRESA;
-    @Column(nullable = false, unique = true)
-    public String TELEFON;
-    @Column(nullable = false, unique = true)
-    public String FAX;
-    @Column(nullable = false, unique = true)
-    public String E_MAIL;
+public class FIZICKO extends KLIJENT {
+
     @Column(nullable = false)
     public String IME;
     @Column(nullable = false)
     public String PREZIME;
     @Column(nullable = false, unique = true)
     public double JMBG;
-    @ManyToOne
-    public KLIJENT kLIJENT;
+
 
     public FIZICKO() {
     }
 
-   public FIZICKO(double ID_MESTA, String ADRESA, String TELEFON, String FAX, String e_MAIL, String IME, String PREZIME, double JMBG, KLIJENT kLIJENT) {
-      this.ID_MESTA = ID_MESTA;
+    public FIZICKO(MESTO mesto, String ADRESA, String TELEFON, String FAX, String e_MAIL, String IME, String PREZIME, double JMBG) {
+    	this.mesto=mesto;
       this.ADRESA = ADRESA;
       this.TELEFON = TELEFON;
       this.FAX = FAX;
-      E_MAIL = e_MAIL;
+      this.E_MAIL = e_MAIL;
       this.IME = IME;
       this.PREZIME = PREZIME;
       this.JMBG = JMBG;
-      this.kLIJENT = kLIJENT;
    }
+
+	
+
+    
+    
 }

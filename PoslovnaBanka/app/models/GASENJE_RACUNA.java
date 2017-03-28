@@ -5,6 +5,8 @@ import play.db.jpa.Model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 import java.util.Date;
 /***********************************************************************
  * Module:  GASENJE_RACUNA.java
@@ -13,23 +15,22 @@ import java.util.Date;
  ***********************************************************************/
 @Entity
 public class GASENJE_RACUNA extends Model {
-   @Column(nullable = false, unique = true)
-   public double ID_GASENJA;
+
    @Column(nullable = false)
    public Date DATUM_GASENJA;
    @Column(nullable = false)
    public String PRENOS_NA_RACUN;
-   
-   @ManyToOne
+   @OneToOne //dovrsi vezu 
    public RACUN rACUN;
 
    public GASENJE_RACUNA() {
    }
 
-   public GASENJE_RACUNA(double ID_GASENJA, Date DATUM_GASENJA, String PRENOS_NA_RACUN, RACUN rACUN) {
-      this.ID_GASENJA = ID_GASENJA;
+   public GASENJE_RACUNA(Date DATUM_GASENJA, String PRENOS_NA_RACUN, RACUN rACUN) {
       this.DATUM_GASENJA = DATUM_GASENJA;
       this.PRENOS_NA_RACUN = PRENOS_NA_RACUN;
       this.rACUN = rACUN;
    }
+
+
 }
