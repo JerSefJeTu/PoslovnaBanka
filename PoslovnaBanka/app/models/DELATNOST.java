@@ -18,7 +18,7 @@ import java.util.Collection;
 public class DELATNOST extends Model {
 
    @Column(nullable = false, unique = true)
-   public double SIFRA_DELATNOSTI;
+   public int SIFRA_DELATNOSTI;
    @Column(nullable = false, unique = true)
    public String NAZIV_DELATNOSTI;
 
@@ -26,7 +26,7 @@ public class DELATNOST extends Model {
    public DELATNOST() {
    }
 
-   public DELATNOST(double SIFRA_DELATNOSTI, String NAZIV_DELATNOSTI) {
+   public DELATNOST(int SIFRA_DELATNOSTI, String NAZIV_DELATNOSTI, Collection<PRAVNO> pRAVNO) {
       this.SIFRA_DELATNOSTI = SIFRA_DELATNOSTI;
       this.NAZIV_DELATNOSTI = NAZIV_DELATNOSTI;
    }

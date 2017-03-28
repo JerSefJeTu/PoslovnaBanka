@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.Collection;
+
 /***********************************************************************
  * Module:  MESTO.java
  * Author:  Aleksa
@@ -14,16 +15,16 @@ import java.util.Collection;
  ***********************************************************************/
 @Entity
 public class MESTO extends Model {
-	
+
     @Column(nullable = false, unique = true)
-    public double POSTANSKI_BROJ;
+    public int POSTANSKI_BROJ;
     @Column(nullable = false)
     public String NAZIV;
 
     public MESTO() {
     }
 
-    public MESTO(double POSTANSKI_BROJ, String NAZIV, Collection<KLIJENT> kLIJENT) {
+    public MESTO(int POSTANSKI_BROJ, String NAZIV, Collection<KLIJENT> kLIJENT) {
         this.POSTANSKI_BROJ = POSTANSKI_BROJ;
         this.NAZIV = NAZIV;
     }

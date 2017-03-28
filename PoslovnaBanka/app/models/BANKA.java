@@ -53,5 +53,4 @@ public class BANKA extends Model {
 		OBRACUNSKI_RACUN = oBRACUNSKI_RACUN;
 	}
 
-    
 }

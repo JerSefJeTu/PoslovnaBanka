@@ -35,7 +35,6 @@ public class MT10X extends Model {
    @OneToMany(mappedBy = "mT10X")
    public java.util.Collection<NALOG> nALOG;
 
-
    public MT10X() {
    }
 

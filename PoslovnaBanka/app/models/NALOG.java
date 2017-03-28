@@ -38,6 +38,7 @@ public class NALOG extends Model {
 //   @ManyToOne
 //   public DNEVNO_STANJE_RACUNA dNEVNO_STANJE_RACUNA;
 
+
    public NALOG() {
    }
 
