@@ -1,3 +1,11 @@
 /.idea
 /lib
 /PoslovnaBanka.iml
+/PoslovnaBanka.ipr
+/tmp
+/modules
+/test-result
+/logs
+/eclipse
+/.project
+/.classpath
