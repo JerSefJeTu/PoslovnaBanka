@@ -6,11 +6,8 @@ package models;
  * Purpose: Defines the Class Fizicko
  ***********************************************************************/
 
+import javax.persistence.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 @Entity
 public class Fizicko extends Klijent {
 
@@ -25,15 +22,11 @@ public class Fizicko extends Klijent {
     public Fizicko() {
     }
 
-    public Fizicko(Mesto mesto, String adresa, String telefon, String fax, String eMail, String ime, String prezime, int JMBG) {
-    	super();
-    	this.mesto=mesto;
-      this.adresa = adresa;
-      this.telefon = telefon;
-      this.fax = fax;
-      this.eMail = eMail;
-      this.ime = ime;
-      this.prezime = prezime;
-      this.JMBG = JMBG;
+    public Fizicko(String ime, String prezime, int JMBG) {
+        this.ime = ime;
+        this.prezime = prezime;
+        this.JMBG = JMBG;
    }
+
+
 }

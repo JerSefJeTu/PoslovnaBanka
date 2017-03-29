@@ -2,10 +2,7 @@ package models;
 
 import play.db.jpa.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Collection;
 /***********************************************************************
  * Module:  Klijent.java
@@ -13,9 +10,11 @@ import java.util.Collection;
  * Purpose: Defines the Class Klijent
  ***********************************************************************/
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+//anotacija iznad sprecava da se u tabeli Klijent
+//pojave i atributi iz klasa koje nasledjuju klasu Klijent
 public class Klijent extends Model {
 
-    @Column(nullable = false, unique = true)
     @OneToMany(mappedBy = "klijent")
     public java.util.Collection<Racun> racun;
     @Column(nullable = false)
