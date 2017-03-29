@@ -9,3 +9,5 @@
 /eclipse
 /.project
 /.classpath
+/conf/application.conf
+/tmp/
