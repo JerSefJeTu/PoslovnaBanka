@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 public class Banka extends Model {
 
     @Column(nullable = false, unique = true)
-    public double sifraBanke;
+    public int sifraBanke;
     @Column(nullable = false, unique = true)
     public String nazivBanke;
     @Column(nullable = false, unique = true)
@@ -35,7 +35,7 @@ public class Banka extends Model {
     	
     }
     
-    public Banka(double sifraBanke, String nazivBanke, String adresaBanke, String telefonBanke,
+    public Banka(int sifraBanke, String nazivBanke, String adresaBanke, String telefonBanke,
 			int PIB, String swiftKod, String obracunskiRacun) {
 		super();
 		this.sifraBanke = sifraBanke;

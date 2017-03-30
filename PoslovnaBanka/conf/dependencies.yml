@@ -3,3 +3,4 @@
 require:
     - play
     - javax -> persistence 2.0
+    - play -> secure

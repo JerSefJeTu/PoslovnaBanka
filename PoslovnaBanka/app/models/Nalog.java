@@ -35,6 +35,8 @@ public class Nalog extends Model {
    public String svrhaPlacanja;
    @Column(nullable = false)
    public Date datumNaloga;
+   @Column(nullable = false)
+   public boolean sacuvan;
 
    @ManyToOne
    public DnevnoStanjeRacuna dnevnoStanjeRacuna;
@@ -45,7 +47,7 @@ public class Nalog extends Model {
    public Nalog() {
    }
 
-   public Nalog(String racunduznika, String racunPoverioca, String pozivNaBrojZaduzenja, String pozivNaBrojOdobrenja, double modelZaduzenja, double modelOdobrenja, double iznos, String duznik, String primalac, String svrhaPlacanja, Date datumNaloga){ //,DnevnoStanjeRacuna dnevnoStanjeRacuna) {
+   public Nalog(String racunduznika, String racunPoverioca, String pozivNaBrojZaduzenja, String pozivNaBrojOdobrenja, double modelZaduzenja, double modelOdobrenja, double iznos, String duznik, String primalac, String svrhaPlacanja, Date datumNaloga,boolean sacuvan){ //,DnevnoStanjeRacuna dnevnoStanjeRacuna) {
       super();
 	   this.racunduznika = racunduznika;
       this.racunPoverioca = racunPoverioca;
@@ -58,6 +60,7 @@ public class Nalog extends Model {
       this.primalac = primalac;
       this.svrhaPlacanja = svrhaPlacanja;
       this.datumNaloga = datumNaloga;
+      this.sacuvan=sacuvan;
 //      this.dNEVNO_STANJE_RACUNA = dnevnoStanjeRacuna;
    }
 }
