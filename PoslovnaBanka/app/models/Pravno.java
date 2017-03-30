@@ -4,6 +4,8 @@ import play.db.jpa.Model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 /***********************************************************************
  * Module:  Pravno.java
  * Author:  Aleksa
@@ -20,6 +22,8 @@ public class Pravno extends Klijent {
    public double maticniBroj;
    @ManyToOne
    public Delatnost delatnost;
+   @OneToOne
+   public Klijent klijent;
 
    public Pravno() {
    }

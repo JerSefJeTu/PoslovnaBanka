@@ -41,7 +41,7 @@ public class Bills {
             nezavisan od logike.
          */
         Banka banka = Banka.findById(1L);
-        return banka.sifraBanke;
+        return (int) banka.sifraBanke;
     }
 
     private static int loadBillsInformation() {

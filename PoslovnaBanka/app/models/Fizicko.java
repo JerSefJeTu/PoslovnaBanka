@@ -18,6 +18,8 @@ public class Fizicko extends Klijent {
     @Column(nullable = false, unique = true)
     public int JMBG;
 
+    @OneToOne
+    public Klijent klijent;
 
     public Fizicko() {
     }
