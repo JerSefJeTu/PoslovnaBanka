@@ -10,4 +10,5 @@
 /.project
 /.classpath
 /conf/application.conf
-/tmp/
+/tmp/*
+/modules/*
