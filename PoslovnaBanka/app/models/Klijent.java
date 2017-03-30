@@ -39,6 +39,8 @@ public class Klijent extends Model {
 
 	public Klijent(Collection<Racun> racun, String adresa, String telefon, String fax, String eMail, Mesto mesto) {
 		super();
+		this.username=username;
+		this.password=password;
 		this.racun = racun;
 		this.adresa = adresa;
 		this.telefon = telefon;
