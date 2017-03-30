@@ -1,0 +1,165 @@
+<html>
+    <head>
+       <link rel="stylesheet" href="templateStyle.css"/>
+       <title>One To One Bank</title>
+    </head>
+    <body>
+        <header>
+            <div id="loginHeader">
+                <div id="loggedUser">Dobro došli, <div id="username"></div> Pera Perić! 
+                    <a href="#" id="logout">ODJAVA</a>
+                </div>
+            </div>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#" id="racuni">MOJI RAČUNI</a></li>
+                <li><a href="#" id="placanja">PLAĆANJE</a></li>
+                <li><a href="#" id="izvestaji">IZVEŠTAJI</a></li>
+            </ul>
+        </nav>
+        <div id="centerContent">
+           <div id="main">
+               <div id="mainTitle">PLAĆANJE</div>
+               <div id="neobradjeniNalozi">
+                  <div id="neobradjeniHeader">Neobrađeni nalozi</div>
+                  <ol>
+                    <li>
+                      <a href="" class="button">x</a> <a href="" class="neobradjeniNalozi">aaaa</a>
+                    </li>
+                    <li>
+                        <a href="" class="button">x</a> <a href="" class="neobradjeniNalozi">bbbb</a>    
+                    </li>
+                    <li>
+                        <a href="" class="button">x</a> <a href="" class="neobradjeniNalozi">cccc</a>
+                    </li>
+                    <li>
+                        <a href="" class="button">x</a> <a href="" class="neobradjeniNalozi">dddd</a>
+                    </li>
+                    <li>
+                       <a href="" class="button">x</a>  <a href="" class="neobradjeniNalozi">dddd</a>
+                    </li>
+                    <li>
+                       <a href="" class="button">x</a>  <a href="" class="neobradjeniNalozi">dddd</a>
+                    </li>
+                    <li>
+                       <a href="" class="button">x</a>  <a href="" class="neobradjeniNalozi">dddd</a>
+                    </li>
+                    <li>
+                       <a href="" class="button">x</a>  <a href="" class="neobradjeniNalozi">dddd</a>
+                    </li>
+                    <li>
+                       <a href="" class="button">x</a>  <a href="" class="neobradjeniNalozi">dddd</a>
+                    </li>
+                    <li>
+                       <a href="" class="button">x</a>  <a href="" class="neobradjeniNalozi">dddd</a>
+                    </li>
+                    <li>
+                       <a href="" class="button">x</a>  <a href="" class="neobradjeniNalozi">dddd</a>
+                    </li>
+                    
+                </ol>
+               </div>
+               <div id="nalogHolder">
+                   <form action="">
+                      <div id="nalog">
+                       <div id="nalogL">
+                       Dužnik - nalogodavac 
+                       <br>
+                       <input type="text" id="duznik">
+                       <br>
+                       Svrha plaćanja
+                       <br>
+                       <input type="text" id="svrhaPlacanja">
+                       <br>
+                       Poverilac - primalac
+                       <br>
+                       <input type="text" id="primalac">
+                       </div>
+                       <div id="nalogR">
+                       Šifra plaćanja&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Valuta
+                       <br>
+                       <input type="text" id="sifraPlacanja" size="3" maxlength="3">
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="valuta" value="RSD" size="3" maxlength="3">
+                           <br>
+                       Iznos
+                       <br>
+                       <input type="number" min="0" id="iznos">
+                           <br>
+                       Račun dužnika - nalogodavca
+                           <br>
+                       <select id="racunDropdown">
+                           <option value="1">678-121212123-00</option>
+                           <option value="2">123-4567890123-88</option>
+                       </select>
+                           <br>
+                       Model i poziv na broj zaduženja
+                           <br>
+                       <input type="text" id="modelZaduzenja" size="5" maxlength="5">
+                       <input type="text" id="pozivNaBrojZaduzenja">
+                           <br>
+                       Račun poverioca - primaoca
+                           <br>
+                       <input type="text" id="racunPrimaoca">
+                           <br>
+                       Model i poziv na broj odobrenja
+                           <br>
+                       <input type="text" id="modelOdobrenja" size="5" maxlength="5">
+                       <input type="text" id="pozivNaBrojOdobrenja">
+                       </div>
+                       </div>
+                       <div id="nalogButtons">
+                           <button type="reset">Poništi</button>
+                            <button type="submit" value="sacuvaj">Sačuvaj</button>
+                           <button type="submit" value="plati">Plati</button>
+                       </div>
+                   </form>
+               </div>
+    <!--
+               <table id="detaljiRacuna">
+                   <thead>
+                       <td id="brojRacunaL">Broj računa:</td>
+                       <td id="brojRacunaR">678-121212123-00</td>
+                   </thead>
+                   <tbody>
+                       <tr>
+                           <td id="vlasnikRacunaL">Vlasnik računa:</td>
+                           <td id="vlasnikRacunaR">Pera Perić</td>
+                       </tr>
+                       <tr>
+                           <td id="datumOtvaranjaL">Datum otvaranja računa:</td>
+                           <td id="datumOtvaranjaR">01.01.2008.</td>
+                       </tr>
+                       <tr>
+                           <td id="trenutnoStanjeL">Trenutno stanje:</td>
+                           <td id="trenutnoStanjeR">35000 RSD</td>
+                       </tr>
+                       <tr>
+                           <td id="poslednjaPromenaL">Poslednja promena:</td>
+                           <td id="poslednjaPromenaR">-250.00 RSD</td>
+                       </tr>
+                       <tr>
+                           <td id="poslednjaUplataL">Poslednja uplata:</td>
+                           <td id="poslednjaUplataR">1250.00 RSD</td>
+                       </tr>
+                       <tr>
+                           <td id="poslednjaIsplataL">Poslednja isplata:</td>
+                           <td id="poslednjaIsplataR">250.00 RSD</td>
+                       </tr>
+                   </tbody>
+               </table>
+               <div id="detailButtons">
+                    <a href="" id="poslednjaPromenaDetaljno">INFO</a>
+                    <a href="" id="poslednjaUplataDetaljno">INFO</a>
+                    <a href="" id="poslednjaIsplataDetaljno">INFO</a>
+               </div>
+               <div id="detailButtonHolder">
+                   <a href="" class="button">Provera uplata</a>
+                   <a href="" class="button">Pregled plaćanja</a>
+                   <a href="" class="button">Gašenje računa</a>
+               </div>
+-->
+            </div>
+        </div>
+    </body>
+</html>
