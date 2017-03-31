@@ -11,7 +11,7 @@
             <ime>Stefan</ime>
             <prezime>Kajkut</prezime>
             <adresa>
-                <ulica broj="17a">Frana Supila</ulica>
+                <ulica>Frana Supila</ulica>
                 <mesto pb="78000">Banja Luka</mesto>
             </adresa>
         </klijent>
@@ -24,7 +24,7 @@
         <klijent tip="pravno_lice">
             <naziv>FTN</naziv>
             <adresa>
-                <ulica broj="5">Trg Dositeja Obradovica</ulica>
+                <ulica>Trg Dositeja Obradovica</ulica>
                 <mesto pb="21000">Novi Sad</mesto>
             </adresa>
         </klijent>

@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 /***********************************************************************
  * Module:  MT10X.java
@@ -33,14 +34,14 @@ public class MT10X extends Model {
    @Column(nullable = false)
    public boolean obradjeno;
    @OneToMany(mappedBy = "mt10x")
-   public java.util.Collection<Nalog> nalog;
+   public List<Nalog> nalog;
    @ManyToOne
    public Clearing clearing;
 
    public MT10X() {
    }
 
-   public MT10X(Date datum, double ukupanIznos, String vrstaPoruke, String swiftKod1, String swiftKod2, String obracunskiRacun1, String obracunskiRacun2, boolean obradjeno, Collection<Nalog> nalog) {
+   public MT10X(Date datum, double ukupanIznos, String vrstaPoruke, String swiftKod1, String swiftKod2, String obracunskiRacun1, String obracunskiRacun2, boolean obradjeno, List<Nalog> nalog) {
       super();
 	   this.datum = datum;
       this.ukupanIznos = ukupanIznos;

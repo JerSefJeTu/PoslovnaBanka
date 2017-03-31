@@ -112,11 +112,7 @@
     
     <xsd:complexType name="Adresa">
         <xsd:sequence>
-            <xsd:element name="ulica">
-                <xsd:complexType mixed="true">
-                    <xsd:attribute name="broj" type="KucniBroj"/>
-                </xsd:complexType>
-            </xsd:element>
+            <xsd:element name="ulica" type="xsd:string"/>
             <xsd:element name="mesto" type="Mesto"/>
         </xsd:sequence>
     </xsd:complexType>

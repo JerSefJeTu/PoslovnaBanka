@@ -24,14 +24,14 @@
                 <ime>Stefan</ime>
                 <prezime>Kajkut</prezime>
                 <adresa>
-                    <ulica broj="17a">Frana Supila</ulica>
+                    <ulica>Frana Supila</ulica>
                     <mesto pb="78000">Banja Luka</mesto>
                 </adresa>
             </duznik>
             <poverilac tip="pravno_lice">
                 <naziv>Fakultet tehnickih nauka</naziv>
                 <adresa>
-                    <ulica broj="5">Trg Dositeja Obradovica</ulica>
+                    <ulica>Trg Dositeja Obradovica</ulica>
                     <mesto pb="21000">Novi Sad</mesto>
                 </adresa>
             </poverilac>
@@ -59,14 +59,14 @@
                 <ime>Stefan</ime>
                 <prezime>Kajkut</prezime>
                 <adresa>
-                    <ulica broj="1">Djordja Servickog</ulica>
+                    <ulica>Djordja Servickog</ulica>
                     <mesto pb="21000">Novi Sad</mesto>
                 </adresa>
             </duznik>
             <poverilac tip="pravno_lice">
                 <naziv>Fakultet tehnickih nauka</naziv>
                 <adresa>
-                    <ulica broj="5">Trg Dositeja Obradovica</ulica>
+                    <ulica>Trg Dositeja Obradovica</ulica>
                     <mesto pb="21000">Novi Sad</mesto>
                 </adresa>
             </poverilac>
