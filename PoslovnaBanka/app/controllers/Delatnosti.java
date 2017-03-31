@@ -4,11 +4,14 @@ import models.Delatnost;
 import play.data.validation.Error;
 import play.data.validation.Required;
 import play.mvc.Controller;
+import play.mvc.With;
+
 import java.util.List;
 
 /**
  * Created by Djordje on 3/27/2017.
  */
+@With(Secure.class)
 public class Delatnosti extends Controller {
 
     public static void show(String mode){
