@@ -2,7 +2,7 @@ package controllers;
 
 import models.Klijent;
 
-public class Security extends controllers.Secure.Security  {
+public class Security extends controllers.Secure.Security{
 	/**
 	pronalazi usera po username i passwordu i vraca true ukoliko ga je pronasao
 	 */
