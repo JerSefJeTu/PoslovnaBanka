@@ -155,23 +155,11 @@ Fizicko(1):
     ime: Djordje
     prezime: Nedovic
     JMBG: 1606995830174
-    adresa: Pejicevi Salasi bb
-    telefon: 0601455559
-    fax: zoviZivana
-    eMail: cvarkovibaba@salasi.rs
-    username: cvarkov
-    password: djordje
-    mesto: 3
+    klijent_id: 1
 
 Pravno(1):
     naziv: Pilicarski zavod
     PIB: 163916
     maticniBroj: 695874
     delatnost: 2
-    adresa: Zmaj Jovina 3
-    telefon: 0696699630
-    fax: faxFax
-    eMail: cika.jova.zmaj@gmail.com
-    username: zmaj
-    password: jova
-    mesto: 2
+    klijent_id: 2

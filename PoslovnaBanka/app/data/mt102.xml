@@ -13,8 +13,8 @@
         </banka_poverilac>
         <ukupan_iznos>15000</ukupan_iznos>
         <valuta>
-            <sifra>RSD</sifra>
             <datum>23.09.2015.</datum>
+            <sifra>RSD</sifra>
         </valuta>
         <datum>29.03.2017.</datum>
     </zaglavlje>

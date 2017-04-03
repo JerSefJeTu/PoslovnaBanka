@@ -160,8 +160,8 @@
     <xsd:element name="valuta">
         <xsd:complexType>
             <xsd:sequence>
-                <xsd:element name="sifra" type="xsd:string"/>
                 <xsd:element name="datum" type="Datum"/>
+                <xsd:element name="sifra" type="xsd:string"/>
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>
