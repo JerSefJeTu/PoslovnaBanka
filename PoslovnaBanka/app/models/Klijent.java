@@ -3,51 +3,54 @@ package models;
 import play.db.jpa.Model;
 
 import javax.persistence.*;
-import java.util.Collection;
-/***********************************************************************
- * Module:  Klijent.java
- * Author:  Aleksa
- * Purpose: Defines the Class Klijent
- ***********************************************************************/
+import java.util.List;
+
+/**
+ * Created by stefan on 4/3/17.
+ */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-//anotacija iznad sprecava da se u tabeli Klijent
-//pojave i atributi iz klasa koje nasledjuju klasu Klijent
-public class Klijent extends Model {
+@DiscriminatorColumn(name = "TIP_LICA")
+@Table(name = "KLIJENT")
+public abstract class Klijent extends Model {
 
-    @OneToMany(mappedBy = "klijent")
-    public java.util.Collection<Racun> racun;
-    @Column(nullable = false)
-    public String adresa;
-    @Column(nullable = false)
-    public String telefon;
-    @Column(nullable = false)
-    public String fax;
-    @Column(nullable = false)
-    public String eMail;
-    @Column(nullable = false)
-    public String username;
-    @Column(nullable = false)
-    public String password;
+    @Column(name = "ADRESA")
+    protected String adresa;
+
+    @Column(name = "EMAIL", unique = true)
+    protected String email;
+
+    @Column(name = "TELEFON")
+    protected String telefon;
+
+    @Column(name = "FAX")
+    protected String fax;
+
+    @Column(name = "USERNAME", unique = true, nullable = false)
+    protected String username;
+
+    @Column(name = "PASSWORD", nullable = false)
+    protected String password;
+
+    @OneToMany
+    @JoinColumn(name = "ID_KLIJENTA")
+    protected List<Racun> racuni;
 
     @ManyToOne
-    public Mesto mesto;
+    @JoinColumn(name = "MESTO_ID")
+    protected Mesto mesto;
 
+    public Klijent() {}
 
-   public Klijent() {
-   }
-
-	public Klijent(Collection<Racun> racun, String adresa, String telefon, String fax, String eMail, Mesto mesto) {
-		super();
-		this.username=username;
-		this.password=password;
-		this.racun = racun;
-		this.adresa = adresa;
-		this.telefon = telefon;
-		this.fax = fax;
-		this.eMail = eMail;
-		this.mesto = mesto;
-	}
-
-   
+    public Klijent(String adresa, String email, String telefon,
+                   String fax, String username, String password, Mesto mesto) {
+        super();
+        this.adresa = adresa;
+        this.email = email;
+        this.telefon = telefon;
+        this.fax = fax;
+        this.username = username;
+        this.password = password;
+        this.mesto = mesto;
+    }
 }
