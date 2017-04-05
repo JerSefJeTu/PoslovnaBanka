@@ -4,31 +4,26 @@ import play.db.jpa.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
-/***********************************************************************
- * Module:  Delatnost.java
- * Author:  Aleksa
- * Purpose: Defines the Class Delatnost
- ***********************************************************************/
+/**
+ * Created by stefan on 4/3/17.
+ */
 @Entity
+@Table(name = "DELATNOST")
 public class Delatnost extends Model {
 
-   @Column(nullable = false, unique = true)
-   public int sifraDelatnosti;
-   @Column(nullable = false, unique = true)
-   public String nazivDelatnosti;
-   //@OneToMany(mappedBy = "delatnost")
-   //public List<Delatnost> listaDelatnosti;
+    @Column(name = "SIFRA", unique = true, nullable = false)
+    public String sifra;
 
+    @Column(name = "NAZIV", nullable = false, unique = true)
+    public String naziv;
 
-   public Delatnost() {
-   }
+    public Delatnost() {}
 
-   public Delatnost(int sifraDelatnosti, String nazivDelatnosti) {
-	   super();
-      this.sifraDelatnosti = sifraDelatnosti;
-      this.nazivDelatnosti = nazivDelatnosti;
-   }
-
-   
+    public Delatnost(String sifra, String naziv) {
+        super();
+        this.sifra = sifra;
+        this.naziv = naziv;
+    }
 }
