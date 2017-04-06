@@ -29,8 +29,8 @@ public class Delatnosti extends Controller {
             show("add");
         }else {
             Delatnost delatnost =new Delatnost();
-            delatnost.nazivDelatnosti = nazivDelatnosti;
-            delatnost.sifraDelatnosti = sifraDelatnosti;
+            delatnost.naziv = nazivDelatnosti;
+            delatnost.sifra = sifraDelatnosti;
             delatnost.save();
             validation.keep();
             show("add");
@@ -43,8 +43,8 @@ public class Delatnosti extends Controller {
     }
     public static void edit(@Required String nazivDelatnosti, int sifraDelatnosti, long id){
         Delatnost delatnost = Delatnost.findById(id);
-        delatnost.nazivDelatnosti=nazivDelatnosti;
-        delatnost.sifraDelatnosti=sifraDelatnosti;
+        delatnost.naziv=nazivDelatnosti;
+        delatnost.sifra=sifraDelatnosti;
         delatnost.save();
         show("");
     }
