@@ -1,5 +1,6 @@
 package models;
 
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 import javax.persistence.Column;
@@ -13,28 +14,53 @@ import java.util.Date;
  ***********************************************************************/
 @Entity
 public class Nalog extends Model {
+   @Required
    @Column(nullable = false)
    public String racunduznika;
+   
+	@Required
    @Column(nullable = false)
-   public String racunPoverioca;
+   public String sifraPlacanja;
+	
+	@Required
+	@Column(nullable = false)
+	public String racunPoverioca;
+	
+	@Required
    @Column(nullable = true)
    public String pozivNaBrojZaduzenja;
+	
+	@Required
    @Column(nullable = true)
    public String pozivNaBrojOdobrenja;
+	
    @Column(nullable = true)
+   @Required
    public String modelZaduzenja;
+   
    @Column(nullable = true)
+   @Required
    public String modelOdobrenja;
+   
    @Column(nullable = false)
+   @Required
    public double iznos;
+   
    @Column(nullable = true)
+   @Required
    public String duznik;
+   
    @Column(nullable = true)
+   @Required
    public String primalac;
+   
    @Column(nullable = true)
+   @Required
    public String svrhaPlacanja;
+   
    @Column(nullable = false)
    public Date datumNaloga;
+   
    @Column(nullable = false)
    public boolean sacuvan;
 

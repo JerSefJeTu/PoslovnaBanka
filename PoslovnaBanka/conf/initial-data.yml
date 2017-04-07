@@ -150,6 +150,7 @@ MT10X(2):
     clearing: 2
 
 Nalog(1):
+    sifraPlacanja: 221
     datumNaloga: 2017-03-25
     duznik: Dragan Jove Torbica
     iznos: 1000
@@ -165,6 +166,7 @@ Nalog(1):
     mt10x: 1
 
 Nalog(2):
+    sifraPlacanja: 221
     datumNaloga: 2017-03-25
     duznik: Dragan Jove Torbica
     iznos: 1000
@@ -181,6 +183,7 @@ Nalog(2):
     
     
 Nalog(3):
+    sifraPlacanja: 221
     datumNaloga: 2017-03-25
     duznik: Dragan Jove Torbica
     iznos: 1000

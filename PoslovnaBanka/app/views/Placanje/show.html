@@ -1,100 +1,102 @@
 #{extends 'TempViewFolder/template.html' /}
 <div id="mainTitle">PLAĆANJE</div>
-               <div id="neobradjeniNalozi">
-                  <div id="neobradjeniHeader">Neobrađeni nalozi</div>
-                  <ol>
-                    <li>
-                      <a href="" class="button">x</a> <a href="" class="neobradjeniNalozi">aaaa</a>
-                    </li>
-                    <li>
-                        <a href="" class="button">x</a> <a href="" class="neobradjeniNalozi">bbbb</a>    
-                    </li>
-                    <li>
-                        <a href="" class="button">x</a> <a href="" class="neobradjeniNalozi">cccc</a>
-                    </li>
-                    <li>
-                        <a href="" class="button">x</a> <a href="" class="neobradjeniNalozi">dddd</a>
-                    </li>
-                    <li>
-                       <a href="" class="button">x</a>  <a href="" class="neobradjeniNalozi">dddd</a>
-                    </li>
-                    <li>
-                       <a href="" class="button">x</a>  <a href="" class="neobradjeniNalozi">dddd</a>
-                    </li>
-                    <li>
-                       <a href="" class="button">x</a>  <a href="" class="neobradjeniNalozi">dddd</a>
-                    </li>
-                    <li>
-                       <a href="" class="button">x</a>  <a href="" class="neobradjeniNalozi">dddd</a>
-                    </li>
-                    <li>
-                       <a href="" class="button">x</a>  <a href="" class="neobradjeniNalozi">dddd</a>
-                    </li>
-                    <li>
-                       <a href="" class="button">x</a>  <a href="" class="neobradjeniNalozi">dddd</a>
-                    </li>
-                    <li>
-                       <a href="" class="button">x</a>  <a href="" class="neobradjeniNalozi">dddd</a>
-                    </li>
-                    
-                </ol>
-               </div>
+              
+                  
                <div id="nalogHolder">
-                   <form action="">
+                   
                       <div id="nalog">
+                      <form action="@{Placanje.add(session.idKlijenta)}" method="post">
                        <div id="nalogL">
-                       Dužnik - nalogodavac 
+                       #{field 'duznik'}
+							 <label for = "${field.id}">Dužnik - nalogodavac</label>
+							 <br>
+							 <input type = "text" name = "${field.name}" id = "${field.id}" />
+						 	<span>#{error 'duznik' /}</span>
+						#{/}
                        <br>
-                       <input type="text" id="duznik">
+                        #{field 'svrhaPlacanja'}
+							 <label for = "${field.id}">Svrha plaćanja</label>
+							 <br>
+							 <input type = "text" name = "${field.name}" id = "${field.id}" />
+						 	<span>#{error 'svrhaPlacanja' /}</span>
+						#{/}
                        <br>
-                       Svrha plaćanja
-                       <br>
-                       <input type="text" id="svrhaPlacanja">
-                       <br>
-                       Poverilac - primalac
-                       <br>
-                       <input type="text" id="primalac">
+                        #{field 'primalac'}
+							 <label for = "${field.id}">Poverilac - primalac</label>
+							 <br>
+							 <input type = "text" name = "${field.name}" id = "${field.id}" />
+							<span>#{error 'primalac' /}</span>
+						#{/}
+                    
                        </div>
                        <div id="nalogR">
-                       Šifra plaćanja&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Valuta
-                       <br>
-                       <input type="text" id="sifraPlacanja" size="3" maxlength="3">
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="valuta" value="RSD" size="3" maxlength="3">
+                          #{field 'sifraPlacanja'}
+							 <label for = "${field.id}">Šifra plaćanja</label>
+							 <br>
+							 <input size="3" maxlength="3" type = "text" name = "${field.name}" id = "${field.id}" />
+							<span>#{error 'sifraPlacanja' /}</span>
+						#{/}
+                     
+                       
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="valuta" value="RSD" size="3" maxlength="3"> Valuta
                            <br>
-                       Iznos
-                       <br>
-                       <input type="number" min="0" id="iznos">
-                           <br>
+                           #{field 'iznos'}
+							 <label for = "${field.id}">Iznos</label>
+							 <br>
+							 <input  type = "nubmer" name = "${field.name}" id = "${field.id}" />
+							<span>#{error 'iznos' /}</span>
+							#{/}
+                      <br>
                        Račun dužnika - nalogodavca
                            <br>
-                           
-
-
                        <select id="racunDropdown">
                        	#{list items:racuni, as:'racun'}
                            <option value="1">${racun.brojRacuna}</option>
                         #{/list}
                        </select>
                            <br>
-                       Model i poziv na broj zaduženja
-                           <br>
-                       <input type="text" id="modelZaduzenja" size="5" maxlength="5">
-                       <input type="text" id="pozivNaBrojZaduzenja">
-                           <br>
-                       Račun poverioca - primaoca
-                           <br>
-                       <input type="text" id="racunPrimaoca">
-                           <br>
-                       Model i poziv na broj odobrenja
-                           <br>
-                       <input type="text" id="modelOdobrenja" size="5" maxlength="5">
-                       <input type="text" id="pozivNaBrojOdobrenja">
+                           #{field 'modelZaduzenja'}
+							 <label for = "${field.id}">Model i poziv na broj zaduženja</label>
+							 <br>
+							 <input  size="5" maxlength="5" type = "nubmer" name = "${field.name}" id = "${field.id}" />
+							<span>#{error 'modelZaduzenja' /}</span>
+							#{/}
+
+                          #{field 'pozivNaBrojZaduzenja'}
+
+							 <input   type = "text" name = "${field.name}" id = "${field.id}" />
+							<span>#{error 'pozivNaBrojZaduzenja' /}</span>
+							#{/}
+							<br>
+                    
+                       #{field 'racunPoverioca'}
+							 <label for = "${field.id}">Račun poverioca - primaoca</label>
+							 <br>
+							 <input type = "text" name = "${field.name}" id = "${field.id}" />
+						 	<span>#{error 'racunPoverioca' /}</span>
+						#{/}
+                     <br>
+                           #{field 'modelOdobrenja'}
+							 <label for = "${field.id}">Model i poziv na broj odobrenja</label>
+							 <br>
+							 <input  size="5" maxlength="5" type = "nubmer" name = "${field.name}" id = "${field.id}" />
+							<span>#{error 'modelOdobrenja' /}</span>
+							#{/}
+
+                          #{field 'pozivNaBrojOdobrenja'}
+
+							 <input   type = "text" name = "${field.name}" id = "${field.id}" />
+							<span>#{error 'pozivNaBrojOdobrenja' /}</span>
+							#{/}
+							<br>                     
+                       
+                       
                        </div>
                        </div>
                        <div id="nalogButtons">
                            <button type="reset">Poništi</button>
-                            <button type="submit" value="sacuvaj">Sačuvaj</button>
+                            
                            <button type="submit" value="plati">Plati</button>
                        </div>
-                   </form>
-               </div>
+                  </form>
+               
