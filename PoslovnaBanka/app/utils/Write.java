@@ -29,7 +29,7 @@ public class Write {
 
     private static Document document = null;
     private static String uplatePath = Play.configuration
-            .getProperty("uplate.path");
+            .getProperty("uplatnice.neobradjene.path");
     private static String mt102xsd = Play.configuration
             .getProperty("my102.xsd.path");
     private static String mt103xsd = Play.configuration
@@ -86,7 +86,13 @@ public class Write {
         List<Klijent> list = new ArrayList<Klijent>();
 
         //DUZNIK
-        //Pravno pravnoDuznik = Pravno.find();
+        Klijent duznik = Klijent.findById(racunDuznika.klijent.id);
+
+        //POVERILAC
+        Klijent poverilac = Klijent.findById(racunPoverioca.klijent.id);
+
+        list.add(duznik);
+        list.add(poverilac);
 
         return list;
     }

@@ -22,9 +22,9 @@ public class Nalog extends Model {
    @Column(nullable = true)
    public String pozivNaBrojOdobrenja;
    @Column(nullable = true)
-   public double modelZaduzenja;
+   public String modelZaduzenja;
    @Column(nullable = true)
-   public double modelOdobrenja;
+   public String modelOdobrenja;
    @Column(nullable = false)
    public double iznos;
    @Column(nullable = true)
@@ -47,7 +47,7 @@ public class Nalog extends Model {
    public Nalog() {
    }
 
-   public Nalog(String racunduznika, String racunPoverioca, String pozivNaBrojZaduzenja, String pozivNaBrojOdobrenja, double modelZaduzenja, double modelOdobrenja, double iznos, String duznik, String primalac, String svrhaPlacanja, Date datumNaloga,boolean sacuvan){ //,DnevnoStanjeRacuna dnevnoStanjeRacuna) {
+   public Nalog(String racunduznika, String racunPoverioca, String pozivNaBrojZaduzenja, String pozivNaBrojOdobrenja, String modelZaduzenja, String modelOdobrenja, double iznos, String duznik, String primalac, String svrhaPlacanja, Date datumNaloga,boolean sacuvan){ //,DnevnoStanjeRacuna dnevnoStanjeRacuna) {
       super();
 	   this.racunduznika = racunduznika;
       this.racunPoverioca = racunPoverioca;
