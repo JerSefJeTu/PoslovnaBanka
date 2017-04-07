@@ -32,8 +32,7 @@ public abstract class Klijent extends Model {
     @Column(name = "PASSWORD", nullable = false)
     public String password;
 
-    @OneToMany
-    @JoinColumn(name = "ID_KLIJENTA")
+    @OneToMany(mappedBy="klijent")
     public List<Racun> racuni;
 
     @ManyToOne

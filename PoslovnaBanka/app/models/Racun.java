@@ -4,6 +4,7 @@ import play.db.jpa.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.Collection;
@@ -23,6 +24,7 @@ public class Racun extends Model {
    public Banka banka;
 
    @ManyToOne
+   @JoinColumn(name="klijent_id")
    public Klijent klijent;
    
    @Column(nullable=false)
