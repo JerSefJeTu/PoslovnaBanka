@@ -1,5 +1,6 @@
-#{extends 'Secure/layout.html' /}
+<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/secure.css'}">
 <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/templateStyle.css'}">
+<head><title>One To One Bank</title></head>
         <header>
             <div id="loginHeader">
                 
@@ -7,10 +8,10 @@
         </header>
 <div id="login">
 	
-	<h1>&{'secure.title'}</h1>
+	
 		
 	#{form @authenticate()}
-		
+		<h1>&{'secure.title'}</h1>
 		#{if flash.error}
 			<p class="error">
 				${messages.get(flash.error)}

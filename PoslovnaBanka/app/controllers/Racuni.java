@@ -9,9 +9,9 @@ import play.mvc.With;
 @With(Secure.class)
 public class Racuni extends Controller {
 
-    public static void show(String mode){
-
-        render(mode);
+    public static void show(long idKlijenta){
+    	System.out.println(idKlijenta);
+        render();
     }
 
 }

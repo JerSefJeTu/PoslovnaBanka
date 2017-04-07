@@ -29,7 +29,7 @@ public class Write {
 
     private static Document document = null;
     private static String uplatePath = Play.configuration
-            .getProperty("uplate.path");
+            .getProperty("uplatnice.neobradjene.path");
     private static String mt102xsd = Play.configuration
             .getProperty("my102.xsd.path");
     private static String mt103xsd = Play.configuration
@@ -83,10 +83,16 @@ public class Write {
         Racun racunDuznika = (Racun)Racun.find("byBrojRacuna", account.racunduznika).fetch();
         Racun racunPoverioca = (Racun)Racun.find("byBrojRacuna", account.racunPoverioca).fetch();
 
-        List<Klijent> list = new ArrayList<>();
+        List<Klijent> list = new ArrayList<Klijent>();
 
         //DUZNIK
-        //Pravno pravnoDuznik = Pravno.find();
+        Klijent duznik = Klijent.findById(racunDuznika.klijent.id);
+
+        //POVERILAC
+        Klijent poverilac = Klijent.findById(racunPoverioca.klijent.id);
+
+        list.add(duznik);
+        list.add(poverilac);
 
         return list;
     }
@@ -351,10 +357,10 @@ public class Write {
 
         Element klijent = null;
 
-        if(client instanceof Fizicko) {
-            klijent = createIndividual((Fizicko) client, tagName);
-        } else if (client instanceof Pravno) {
-            klijent = createLegalEntity((Pravno) client, tagName);
+        if(client instanceof FizickoLice) {
+            klijent = createIndividual((FizickoLice) client, tagName);
+        } else if (client instanceof PravnoLice) {
+            klijent = createLegalEntity((PravnoLice) client, tagName);
         } else {
             System.out.print("Greska!");
         }
@@ -363,7 +369,7 @@ public class Write {
 
     }
 
-    private static Element createLegalEntity(Pravno legalEntity, String tagName) {
+    private static Element createLegalEntity(PravnoLice legalEntity, String tagName) {
         Element klijent = document.createElement(tagName);
 
         klijent.setAttributeNode(document.createAttribute("tip"));
@@ -382,7 +388,7 @@ public class Write {
         return klijent;
     }
 
-    private static Element createIndividual(Fizicko individual, String tagName) {
+    private static Element createIndividual(FizickoLice individual, String tagName) {
         Element klijent = document.createElement(tagName);
 
         klijent.setAttributeNode(document.createAttribute("tip"));

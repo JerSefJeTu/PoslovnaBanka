@@ -1,6 +1,6 @@
 package utils;
 
-import models.Mesto;
+import models.*;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
 import play.test.Fixtures;
@@ -14,7 +14,7 @@ public class Init extends Job {
             //kojie je id da dobije entitet
             Fixtures.delete();
             Fixtures.loadModels("initial-data.yml");
-            
+
         }
     }
 }
