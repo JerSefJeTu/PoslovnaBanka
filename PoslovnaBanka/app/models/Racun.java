@@ -8,6 +8,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
+
 /***********************************************************************
  * Module:  Racun.java
  * Author:  Aleksa
@@ -18,7 +20,7 @@ public class Racun extends Model {
    @Column(nullable = false, unique = true)
    public String brojRacuna;
    @OneToMany(mappedBy = "racun")
-   public java.util.Collection<DnevnoStanjeRacuna> dnevnoStanjeRacuna;
+   public List<DnevnoStanjeRacuna> dnevnoStanjeRacuna;
    @ManyToOne
    public Banka banka;
 
@@ -31,7 +33,7 @@ public class Racun extends Model {
    public Racun() {
    }
 
-   public Racun(String brojRacuna, Collection<DnevnoStanjeRacuna> dnevnoStanjeRacuna, Banka banka, Date datumOtvaranja) {
+   public Racun(String brojRacuna, List<DnevnoStanjeRacuna> dnevnoStanjeRacuna, Banka banka, Date datumOtvaranja) {
       super();
       this.brojRacuna = brojRacuna;
       this.dnevnoStanjeRacuna = dnevnoStanjeRacuna;
