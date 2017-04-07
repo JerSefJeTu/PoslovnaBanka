@@ -83,7 +83,7 @@ public class Write {
         Racun racunDuznika = (Racun)Racun.find("byBrojRacuna", account.racunduznika).fetch();
         Racun racunPoverioca = (Racun)Racun.find("byBrojRacuna", account.racunPoverioca).fetch();
 
-        List<Klijent> list = new ArrayList<>();
+        List<Klijent> list = new ArrayList<Klijent>();
 
         //DUZNIK
         Klijent duznik = Klijent.findById(racunDuznika.klijent.id);
