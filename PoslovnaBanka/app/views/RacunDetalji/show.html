@@ -1,4 +1,5 @@
-<div id="mainTitle">STANÐˆÐ• I OSNOVNI PODACI O RAÄŒUNU</div>
+#{extends 'TempViewFolder/template.html' /}
+<div id="mainTitle">STANJE I OSNOVNI PODACI O RAČUNU</div>
 <table id="detaljiRacuna">
    <thead>
        <td id="brojRacunaL">Broj računa:</td>
@@ -7,7 +8,7 @@
    <tbody>
        <tr>
            <td id="vlasnikRacunaL">Vlasnik računa:</td>
-           <td id="vlasnikRacunaR">${racun.klijent.ime}</td>
+           <td id="vlasnikRacunaR"> ${session.ime} ${session.prezime} ${session.naziv} </td>
        </tr>
        <tr>
            <td id="datumOtvaranjaL">Datum otvaranja računa:</td>
@@ -15,19 +16,37 @@
        </tr>
        <tr>
            <td id="trenutnoStanjeL">Trenutno stanje:</td>
-           <td id="trenutnoStanjeR">${racun.brojRacuna}</td>
+		    #{list items:racun.dnevnoStanjeRacuna, as:'dnevnoStanjeRacuna'}
+		    
+		    
+		    
+		    
+		    #{if dnevnoStanjeRacuna_isLast == true }
+		    <td id="trenutnoStanjeR">${dnevnoStanjeRacuna.novoStanje}</td>
+			
        </tr>
        <tr>
            <td id="poslednjaPromenaL">Poslednja promena:</td>
-           <td id="poslednjaPromenaR">-250.00 RSD</td>
+           <td id="poslednjaPromenaR">${dnevnoStanjeRacuna.prometUKorist}</td>
        </tr>
+       #{/if}
+			#{/list}
+			
        <tr>
+        #{list items:naloziUKorist, as:'nalog'}
+         #{if nalog_isLast == true }
            <td id="poslednjaUplataL">Poslednja uplata:</td>
-           <td id="poslednjaUplataR">1250.00 RSD</td>
+           <td id="poslednjaUplataR">${nalog.iznos}</td>
+            #{/if}
+			#{/list}
        </tr>
        <tr>
+       #{list items:naloziNaTeret, as:'nalog'}
+         #{if nalog_isLast == true }
            <td id="poslednjaIsplataL">Poslednja isplata:</td>
-           <td id="poslednjaIsplataR">250.00 RSD</td>
+           <td id="poslednjaIsplataR">${nalog.iznos}</td>
+           #{/if}
+			#{/list}
        </tr>
    </tbody>
 </table>

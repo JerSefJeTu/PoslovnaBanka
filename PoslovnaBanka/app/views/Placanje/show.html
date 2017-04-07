@@ -1,7 +1,7 @@
 #{extends 'TempViewFolder/template.html' /}
-<div id="mainTitle">PLAÄ†ANJE</div>
+<div id="mainTitle">PLAĆANJE</div>
                <div id="neobradjeniNalozi">
-                  <div id="neobradjeniHeader">NeobraÄ‘eni nalozi</div>
+                  <div id="neobradjeniHeader">Neobrađeni nalozi</div>
                   <ol>
                     <li>
                       <a href="" class="button">x</a> <a href="" class="neobradjeniNalozi">aaaa</a>
@@ -43,11 +43,11 @@
                    <form action="">
                       <div id="nalog">
                        <div id="nalogL">
-                       DuÅ¾nik - nalogodavac 
+                       Dužnik - nalogodavac 
                        <br>
                        <input type="text" id="duznik">
                        <br>
-                       Svrha plaÄ‡anja
+                       Svrha plaćanja
                        <br>
                        <input type="text" id="svrhaPlacanja">
                        <br>
@@ -56,7 +56,7 @@
                        <input type="text" id="primalac">
                        </div>
                        <div id="nalogR">
-                       Å ifra plaÄ‡anja&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Valuta
+                       Šifra plaćanja&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Valuta
                        <br>
                        <input type="text" id="sifraPlacanja" size="3" maxlength="3">
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="valuta" value="RSD" size="3" maxlength="3">
@@ -65,19 +65,23 @@
                        <br>
                        <input type="number" min="0" id="iznos">
                            <br>
-                       RaÄ�un duÅ¾nika - nalogodavca
+                       Račun dužnika - nalogodavca
                            <br>
+                           
+
+
                        <select id="racunDropdown">
-                           <option value="1">678-121212123-00</option>
-                           <option value="2">123-4567890123-88</option>
+                       	#{list items:racuni, as:'racun'}
+                           <option value="1">${racun.brojRacuna}</option>
+                        #{/list}
                        </select>
                            <br>
-                       Model i poziv na broj zaduÅ¾enja
+                       Model i poziv na broj zaduženja
                            <br>
                        <input type="text" id="modelZaduzenja" size="5" maxlength="5">
                        <input type="text" id="pozivNaBrojZaduzenja">
                            <br>
-                       RaÄ�un poverioca - primaoca
+                       Račun poverioca - primaoca
                            <br>
                        <input type="text" id="racunPrimaoca">
                            <br>
@@ -88,8 +92,8 @@
                        </div>
                        </div>
                        <div id="nalogButtons">
-                           <button type="reset">PoniÅ¡ti</button>
-                            <button type="submit" value="sacuvaj">SaÄ�uvaj</button>
+                           <button type="reset">Poništi</button>
+                            <button type="submit" value="sacuvaj">Sačuvaj</button>
                            <button type="submit" value="plati">Plati</button>
                        </div>
                    </form>

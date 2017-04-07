@@ -1,5 +1,10 @@
 package controllers;
 
+import java.util.List;
+
+import models.DnevnoStanjeRacuna;
+import models.Klijent;
+import models.Racun;
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -10,8 +15,11 @@ import play.mvc.With;
 public class Racuni extends Controller {
 
     public static void show(long idKlijenta){
-    	System.out.println(idKlijenta);
-        render();
+    	List<Racun> racuni = Racun.find("klijent_id", idKlijenta).fetch();
+  
+    	
+    
+        render(racuni);
     }
 
 }

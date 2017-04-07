@@ -23,6 +23,7 @@ public class Application extends Controller {
     		session.put("naziv", klijent.naziv);
     		session.put("ime", "");
     		session.put("prezime", "");
+    		session.put("idKlijenta", klijent.id);
     		
     		for (Racun racun : klijent.racuni) {
 				System.out.println(racun.brojRacuna);
@@ -34,6 +35,7 @@ public class Application extends Controller {
     		session.put("ime", klijent.ime);
     		session.put("prezime", klijent.prezime);
     		session.put("naziv", "");
+    		session.put("idKlijenta", klijent.id);
     		Racuni.show(klijent.id);
     		
     		for (Racun racun : klijent.racuni) {

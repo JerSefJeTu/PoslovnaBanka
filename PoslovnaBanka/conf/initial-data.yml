@@ -99,7 +99,7 @@ GasenjeRacuna(1):
 
 DnevnoStanjeRacuna(1):
     datum: 2017-03-29
-    prehodnoStanje: 0
+    prethodnoStanje: 0
     prometUKorist: 100
     stanje: 100
     novoStanje: 100
@@ -107,11 +107,27 @@ DnevnoStanjeRacuna(1):
 
 DnevnoStanjeRacuna(2):
     datum: 2017-03-29
-    prehodnoStanje: 0
+    prethodnoStanje: 0
     prometUKorist: 100
     stanje: 100
     novoStanje: 100
     racun: 2
+    
+DnevnoStanjeRacuna(3):
+    datum: 2017-03-29
+    prethodnoStanje: 0
+    prometUKorist: 100
+    stanje: 444
+    novoStanje: 100
+    racun: 3
+    
+DnevnoStanjeRacuna(4):
+    datum: 2017-03-29
+    prethodnoStanje: 600
+    prometUKorist: 100
+    stanje: 600
+    novoStanje: 400
+    racun: 3
 
 MT10X(1):
     datum: 2017-03-28
@@ -157,8 +173,24 @@ Nalog(2):
     pozivNaBrojOdobrenja: 93
     pozivNaBrojZaduzenja: 93
     primalac: FTN
-    racunPoverioca: 200-123456-00
-    racunduznika: 200-123456-01
+    racunPoverioca: 200-123456-01
+    racunduznika: 200-123456-00
     svrhaPlacanja: Maloj Milici skolarina
     dnevnoStanjeRacuna: 1
+    mt10x: 2
+    
+    
+Nalog(3):
+    datumNaloga: 2017-03-25
+    duznik: Dragan Jove Torbica
+    iznos: 1000
+    modelOdobrenja: 1
+    modelZaduzenja: 2
+    pozivNaBrojOdobrenja: 93
+    pozivNaBrojZaduzenja: 93
+    primalac: FTN
+    racunPoverioca: 200-123456-00
+    racunduznika: 200-123456-02
+    svrhaPlacanja: Maloj Milici skolarina
+    dnevnoStanjeRacuna: 2
     mt10x: 2
