@@ -45,5 +45,17 @@ public class DnevnoStanjeRacuna extends Model {
       this.nalog = nalog;
       this.racun = racun;
    }
-   
+
+   @Override
+   public String toString() {
+      return "DnevnoStanjeRacuna{" +
+              "datum=" + datum +
+              ", prethodnoStanje=" + prethodnoStanje +
+              ", prometUKorist=" + prometUKorist +
+              ", stanje=" + stanje +
+              ", novoStanje=" + novoStanje +
+              ", nalog=" + nalog +
+              ", racun=" + racun +
+              '}';
+   }
 }

@@ -15,30 +15,30 @@ import java.util.List;
 public abstract class Klijent extends Model {
 
     @Column(name = "ADRESA")
-    protected String adresa;
+    public String adresa;
 
     @Column(name = "EMAIL", unique = true)
-    protected String email;
+    public String email;
 
     @Column(name = "TELEFON")
-    protected String telefon;
+    public String telefon;
 
     @Column(name = "FAX")
-    protected String fax;
+    public String fax;
 
     @Column(name = "USERNAME", unique = true, nullable = false)
-    protected String username;
+    public String username;
 
     @Column(name = "PASSWORD", nullable = false)
-    protected String password;
+    public String password;
 
     @OneToMany
     @JoinColumn(name = "ID_KLIJENTA")
-    protected List<Racun> racuni;
+    public List<Racun> racuni;
 
     @ManyToOne
     @JoinColumn(name = "MESTO_ID")
-    protected Mesto mesto;
+    public Mesto mesto;
 
     public Klijent() {}
 

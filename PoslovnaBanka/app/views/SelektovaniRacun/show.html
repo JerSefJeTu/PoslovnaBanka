@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/secure.css'}">
+    <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/templateStyle.css'}">
+</head>
+<body>
+<div id="mainTitle">STANЈЕ I OSNOVNI PODACI O RAČUNU</div>
+<table id="detaljiRacuna">
+    #{list items:selektovaniRacun, as:'selektovaniRacun'}
+    <thead>
+    <td id="brojRacunaL">Broj računa:</td>
+    <td id="brojRacunaR">${selektovaniRacun.brojRacuna}</td>
+    </thead>
+
+    <tbody>
+    <tr>
+        <td id="vlasnikRacunaL">Vlasnik računa:</td>
+        <td id="vlasnikRacunaR">${selektovaniRacun.vlasnikRacuna}</td>
+    </tr>
+    <tr>
+        <td id="datumOtvaranjaL">Datum otvaranja računa:</td>
+        <td id="datumOtvaranjaR">${selektovaniRacun.datumOtvaranjaRacuna}</td>
+    </tr>
+    <tr>
+        <td id="trenutnoStanjeL">Trenutno stanje:</td>
+        <td id="trenutnoStanjeR">${selektovaniRacun.stanjeRacuna}</td>
+    </tr>
+    <tr>
+        <td id="poslednjaPromenaL">Poslednja promena:</td>
+        <td id="poslednjaPromenaR">${selektovaniRacun.poslenjaPromena}</td>
+    </tr>
+    <tr>
+        <td id="poslednjaUplataL">Poslednja uplata:</td>
+        <td id="poslednjaUplataR">${selektovaniRacun.poslenjaUplata}</td>
+    </tr>
+    <tr>
+        <td id="poslednjaIsplataL">Poslednja isplata:</td>
+        <td id="poslednjaIsplataR">${selektovaniRacun.poslednjaIsplata}</td>
+    </tr>
+    </tbody>
+    #{/list}
+</table>
+<div id="detailButtons">
+    <a href="" id="poslednjaPromenaDetaljno">INFO</a>
+    <a href="" id="poslednjaUplataDetaljno">INFO</a>
+    <a href="" id="poslednjaIsplataDetaljno">INFO</a>
+</div>
+<div id="detailButtonHolder">
+    <a href="" class="button">Provera uplata</a>
+    <a href="" class="button">Pregled plaćanja</a>
+    <a href="" class="button">Gašenje računa</a>
+</div>
+
+</body>
+</html>
