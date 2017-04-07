@@ -32,11 +32,14 @@ public abstract class Klijent extends Model {
     @Column(name = "PASSWORD", nullable = false)
     public String password;
 
+<<<<<<< Updated upstream
     @OneToMany(mappedBy="klijent")
+=======
+    @OneToMany(mappedBy = "klijent")
+>>>>>>> Stashed changes
     public List<Racun> racuni;
 
     @ManyToOne
-    @JoinColumn(name = "MESTO_ID")
     public Mesto mesto;
 
     public Klijent() {}

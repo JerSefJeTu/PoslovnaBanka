@@ -64,6 +64,129 @@ public class Read {
         readFiles(neobradjenoMT103);
     }
 
+    private static boolean decomponiseMT102(Document document) {
+
+        Element mt102El = (Element) document
+                .getElementsByTagName("mt102")
+                .item(0);
+        Element zaglavljeEl = (Element) document
+                .getElementsByTagName("zaglavlje")
+                .item(0);
+        Element listaNalogaEl = (Element) document
+                .getElementsByTagName("lista_naloga")
+                .item(0);
+
+        Banka bankaDuznik = getBank(zaglavljeEl,
+                "banka_duznik");
+        Banka bankaPoverilac = getBank(zaglavljeEl,
+                "banka_poverilac");
+
+        double ukupanIznos = Double.parseDouble(
+                zaglavljeEl
+                        .getElementsByTagName("ukupan_iznos")
+                        .item(0)
+                        .getTextContent());
+        String datumStr = zaglavljeEl
+                .getElementsByTagName("datum")
+                .item(0)
+                .getTextContent();
+
+        Date datum = getDate(datumStr);
+
+        NodeList nodeNalozi = zaglavljeEl.getElementsByTagName("nalog");
+        for(int i = 0; i < nodeNalozi.getLength(); i++) {
+            Element nalogEl = (Element) nodeNalozi.item(i);
+            String duznik = getClient(nalogEl, "duznik");
+            String poverilac = getClient(nalogEl, "poverilac");
+
+            Element podaciNalog = (Element) nalogEl
+                    .getElementsByTagName("podaci_nalog")
+                    .item(0);
+            String svrhaPlacanja = podaciNalog
+                    .getElementsByTagName("svrha_placanja")
+                    .item(0)
+                    .getTextContent();
+            String dateStr = podaciNalog
+                    .getElementsByTagName("datum")
+                    .item(0)
+                    .getTextContent();
+            Date datumNaloga = getDate(dateStr);
+
+            Element uplataEl = (Element) nalogEl
+                    .getElementsByTagName("uplata")
+                    .item(0);
+
+            // UPLATA
+            Element zaduzenjeEl = (Element) uplataEl
+                    .getElementsByTagName("zaduzenje")
+                    .item(0);
+            Element odobrenjeEl = (Element) uplataEl
+                    .getElementsByTagName("odobrenje")
+                    .item(0);
+            double iznos = Double.parseDouble(uplataEl
+                    .getElementsByTagName("iznos")
+                    .item(0).getTextContent());
+
+            //<<<ZADUZENJE>>>
+            String zaduzenjeRacun = zaduzenjeEl
+                    .getElementsByTagName("broj_racuna")
+                    .item(0)
+                    .getTextContent();
+            String zaduzenjeModel = zaduzenjeEl
+                    .getElementsByTagName("broj_modela")
+                    .item(0)
+                    .getTextContent();
+            String zaduzenjeBroj = zaduzenjeEl
+                    .getElementsByTagName("poziv_na_broj")
+                    .item(0)
+                    .getTextContent();
+
+            Racun racunDuznik = (Racun) Racun.find("byBrojRacuna", zaduzenjeRacun)
+                    .fetch();
+
+
+            //<<<ODOBRENJE>>>
+            String odobrenjeRacun = odobrenjeEl
+                    .getElementsByTagName("broj_racuna")
+                    .item(0)
+                    .getTextContent();
+            String odobrenjeModel = odobrenjeEl
+                    .getElementsByTagName("broj_modela")
+                    .item(0)
+                    .getTextContent();
+            String odobrenjeBroj = odobrenjeEl
+                    .getElementsByTagName("poziv_na_broj")
+                    .item(0)
+                    .getTextContent();
+
+            Racun racunPoverilac = (Racun) Racun.find("byBrojRacuna", odobrenjeRacun)
+                    .fetch();
+
+            MT10X mt102 = new MT10X(datumNaloga, ukupanIznos, "mt102",
+                    bankaDuznik.swiftKod, bankaPoverilac.swiftKod,
+                    bankaDuznik.obracunskiRacun, bankaPoverilac.obracunskiRacun,
+                    true, null);
+            mt102.save();
+
+
+            Nalog nalog = new Nalog(zaduzenjeRacun, odobrenjeRacun, zaduzenjeBroj,
+                    odobrenjeBroj, zaduzenjeModel, odobrenjeModel, iznos,
+                    duznik, poverilac, svrhaPlacanja, datumNaloga, true);
+            nalog.mt10x = mt102;
+            nalog.save();
+
+            if(racunDuznik != null) {
+                dailyState(racunDuznik, iznos, "-", datumNaloga);
+            }
+
+            if(racunPoverilac != null) {
+                dailyState(racunPoverilac, iznos, "+", datumNaloga);
+            }
+        }
+
+        return true;
+    }
+
     private static boolean decomponiseMT103(Document document) {
 
         Element mt103El = (Element) document
@@ -82,69 +205,14 @@ public class Read {
                 .getElementsByTagName("uplata")
                 .item(0);
 
-        Banka bankaDuznik = getBank(duznikEl);
+        Banka bankaDuznik = getBank(duznikEl,
+                "banka");
+        Banka bankaPoverilac = getBank(poverilacEl,
+                "banka");
 
-        Banka bankaPoverilac = getBank(poverilacEl);
+        String duznik= getClient(duznikEl, "klijent");
+        String poverilac = getClient(poverilacEl, "klijent");
 
-        Element duznikKlijentEl = (Element) duznikEl
-                .getElementsByTagName("klijent")
-                .item(0);
-
-        Element duznikAdresaEl = (Element) duznikKlijentEl
-                .getElementsByTagName("adresa")
-                .item(0);
-
-        String duznikAdresa = getAddress(duznikAdresaEl);
-
-        String duznikString = null;
-        String duznikTip = duznikKlijentEl.getAttribute("tip");
-        if(duznikTip.equals("fizicko_lice")) {
-            String ime = duznikKlijentEl
-                    .getElementsByTagName("ime")
-                    .item(0)
-                    .getTextContent();
-            String prezime = duznikKlijentEl
-                    .getElementsByTagName("prezime")
-                    .item(0)
-                    .getTextContent();
-            duznikString = ime + " " + prezime + duznikAdresa;
-        } else if(duznikTip.equals("pravno_lice")) {
-            String naziv = duznikKlijentEl
-                    .getElementsByTagName("naziv")
-                    .item(0)
-                    .getTextContent();
-            duznikString = naziv + duznikAdresa;
-        }
-
-        Element poverilacKlijentEl = (Element) poverilacEl
-                .getElementsByTagName("klijent")
-                .item(0);
-
-        Element poverilacAdresaEl = (Element) poverilacKlijentEl
-                .getElementsByTagName("adresa")
-                .item(0);
-
-        String poverilacAdresa = getAddress(poverilacAdresaEl);
-
-        String poverilacString = null;
-        String poverilacTip = poverilacKlijentEl.getAttribute("tip");
-        if(poverilacTip.equals("fizicko_lice")) {
-            String ime = poverilacKlijentEl
-                    .getElementsByTagName("ime")
-                    .item(0)
-                    .getTextContent();
-            String prezime = poverilacKlijentEl
-                    .getElementsByTagName("prezime")
-                    .item(0)
-                    .getTextContent();
-            poverilacString = ime + " " + prezime + poverilacAdresa;
-        } else if(poverilacTip.equals("pravno_lice")) {
-            String naziv = poverilacKlijentEl
-                    .getElementsByTagName("naziv")
-                    .item(0)
-                    .getTextContent();
-            poverilacString = naziv + poverilacAdresa;
-        }
 
         String svrhaPlacanja = nalogEl
                 .getElementsByTagName("svrha_placanja")
@@ -183,8 +251,7 @@ public class Read {
                 .getTextContent();
 
         Racun racunDuznik = (Racun) Racun.find("byBrojRacuna", zaduzenjeRacun)
-                .fetch()
-                .get(0);
+                .fetch();
 
 
         //<<<ODOBRENJE>>>
@@ -202,61 +269,103 @@ public class Read {
                 .getTextContent();
 
         Racun racunPoverilac = (Racun) Racun.find("byBrojRacuna", odobrenjeRacun)
-                .fetch()
-                .get(0);
+                .fetch();
 
-        MT10X mt103 = new MT10X();
-        mt103.datum = datumNaloga;
-        mt103.ukupanIznos = iznos;
-        mt103.vrstaPoruke = "mt103";
-        mt103.swiftKod1 = bankaDuznik.swiftKod;
-        mt103.swiftKod2 = bankaPoverilac.swiftKod;
-        mt103.obracunskiRacun1 = bankaDuznik.obracunskiRacun;
-        mt103.obracunskiRacun2 = bankaPoverilac.obracunskiRacun;
-        mt103.obradjeno = true;
-
+        MT10X mt103 = new MT10X(datumNaloga, iznos, "mt103",
+                bankaDuznik.swiftKod, bankaPoverilac.swiftKod,
+                bankaDuznik.obracunskiRacun, bankaPoverilac.obracunskiRacun,
+                true, null);
         mt103.save();
 
 
-        Nalog nalog = new Nalog();
-        nalog.datumNaloga = datumNaloga;
-        nalog.racunduznika = zaduzenjeRacun;
-        nalog.racunPoverioca = odobrenjeRacun;
-        nalog.pozivNaBrojOdobrenja = odobrenjeBroj;
-        nalog.pozivNaBrojZaduzenja = zaduzenjeBroj;
-        nalog.modelOdobrenja = odobrenjeModel;
-        nalog.iznos = iznos;
-        nalog.svrhaPlacanja = svrhaPlacanja;
-        nalog.sacuvan = true;
-        nalog.duznik = duznikString;
-        nalog.primalac = poverilacString;
+        Nalog nalog = new Nalog(zaduzenjeRacun, odobrenjeRacun, zaduzenjeBroj,
+                odobrenjeBroj, zaduzenjeModel, odobrenjeModel, iznos,
+                duznik, poverilac, svrhaPlacanja, datumNaloga, true);
         nalog.mt10x = mt103;
-
         nalog.save();
 
         if(racunDuznik != null) {
-            DnevnoStanjeRacuna dnevnoStanjeRacunaDuznik =
-                    (DnevnoStanjeRacuna) DnevnoStanjeRacuna.find("racun_id", racunDuznik.id)
-                    .fetch()
-                    .get(0);
+            dailyState(racunDuznik, iznos, "-", datumNaloga);
+        }
 
-
+        if(racunPoverilac != null) {
+            dailyState(racunPoverilac, iznos, "+", datumNaloga);
         }
 
         return true;
     }
 
-    private static Banka getBank(Element client) {
+    private static void dailyState(Racun bill, double amount,
+                            String operation, Date date) {
+
+        DnevnoStanjeRacuna dnevnoStanjeRacuna =
+                (DnevnoStanjeRacuna) DnevnoStanjeRacuna.find("racun_id",
+                        bill.id)
+                        .fetch();
+
+        dnevnoStanjeRacuna.prethodnoStanje =
+                dnevnoStanjeRacuna.novoStanje;
+        if(operation.equals("+")) {
+            dnevnoStanjeRacuna.novoStanje =
+                    dnevnoStanjeRacuna.prethodnoStanje + amount;
+            dnevnoStanjeRacuna.prometUKorist = amount;
+        } else if (operation.equals("-")) {
+            dnevnoStanjeRacuna.novoStanje =
+                    dnevnoStanjeRacuna.prethodnoStanje - amount;
+            dnevnoStanjeRacuna.prometUKorist = -amount;
+        }
+
+        dnevnoStanjeRacuna.datum = date;
+        dnevnoStanjeRacuna.save();
+    }
+
+    private static String getClient(Element client,
+                                    String elementName) {
+
+        Element klijentEl = (Element) client
+                .getElementsByTagName(elementName)
+                .item(0);
+
+        Element adresaEl = (Element) klijentEl
+                .getElementsByTagName("adresa")
+                .item(0);
+
+        String adresa = getAddress(adresaEl);
+
+        String klijent = null;
+        String tip = klijentEl.getAttribute("tip");
+        if(tip.equals("fizicko_lice")) {
+            String ime = klijentEl
+                    .getElementsByTagName("ime")
+                    .item(0)
+                    .getTextContent();
+            String prezime = klijentEl
+                    .getElementsByTagName("prezime")
+                    .item(0)
+                    .getTextContent();
+            klijent = ime + " " + prezime + adresa;
+        } else if(tip.equals("pravno_lice")) {
+            String naziv = klijentEl
+                    .getElementsByTagName("naziv")
+                    .item(0)
+                    .getTextContent();
+            klijent = naziv + adresa;
+        }
+
+        return klijent;
+    }
+
+    private static Banka getBank(Element client, String
+                                 elementName) {
         Element bankaEl = (Element) client
-                .getElementsByTagName("banka")
+                .getElementsByTagName(elementName)
                 .item(0);
         String swift = bankaEl
                 .getElementsByTagName("swift")
                 .item(0)
                 .getTextContent();
         Banka banka = (Banka) Banka.find("bySwiftKod", swift)
-                .fetch()
-                .get(0);
+                .fetch();
 
         return banka;
     }
@@ -294,8 +403,7 @@ public class Read {
         if(root.equals("mt103")) {
             return decomponiseMT103(document);
         } else if (root.equals("mt102")) {
-
-            return true;
+            return decomponiseMT102(document);
         } else {
             System.out.println("Greska!");
         }
