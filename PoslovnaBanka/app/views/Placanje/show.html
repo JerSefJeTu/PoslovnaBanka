@@ -1,13 +1,19 @@
+#{extends 'standardForm.html' /}
 #{extends 'TempViewFolder/template.html' /}
+
 <div id="mainTitle">PLAĆANJE</div>
               
                   
                <div id="nalogHolder">
-                   
+                   <form action="@{Placanje.add(session.idKlijenta)}" method="post">
                       <div id="nalog">
-                      <form action="@{Placanje.add(session.idKlijenta)}" method="post">
+                      
                        <div id="nalogL">
-                       #{field 'duznik'}
+                       
+                          #{field 'id'}
+            					<input type = "hidden" name = "${field.name}" id = "${field.id}"/>
+        				  #{/}
+                       	#{field 'duznik'}
 							 <label for = "${field.id}">Dužnik - nalogodavac</label>
 							 <br>
 							 <input type = "text" name = "${field.name}" id = "${field.id}" />
@@ -94,9 +100,9 @@
                        </div>
                        </div>
                        <div id="nalogButtons">
-                           <button type="reset">Poništi</button>
-                            
-                           <button type="submit" value="plati">Plati</button>
+                           <div id = "formActions">
+				        <input type = "submit" value = "Potvrda" style="margin-left:6em"/>
+				        </div>
                        </div>
                   </form>
                

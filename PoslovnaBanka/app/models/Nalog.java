@@ -89,4 +89,15 @@ public class Nalog extends Model {
       this.sacuvan=sacuvan;
 //      this.dNEVNO_STANJE_RACUNA = dnevnoStanjeRacuna;
    }
+
+@Override
+public String toString() {
+	return "Nalog [racunduznika=" + racunduznika + ", sifraPlacanja=" + sifraPlacanja + ", racunPoverioca="
+			+ racunPoverioca + ", pozivNaBrojZaduzenja=" + pozivNaBrojZaduzenja + ", pozivNaBrojOdobrenja="
+			+ pozivNaBrojOdobrenja + ", modelZaduzenja=" + modelZaduzenja + ", modelOdobrenja=" + modelOdobrenja
+			+ ", iznos=" + iznos + ", duznik=" + duznik + ", primalac=" + primalac + ", svrhaPlacanja=" + svrhaPlacanja
+			+ ", datumNaloga=" + datumNaloga + ", sacuvan=" + sacuvan + ", dnevnoStanjeRacuna=" + dnevnoStanjeRacuna
+			+ ", mt10x=" + mt10x + "]";
+}
+   
 }

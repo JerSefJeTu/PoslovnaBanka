@@ -22,8 +22,14 @@ public class Placanje extends Controller {
 		
 		if(validation.hasErrors()) {
 
+			for(play.data.validation.Error error : validation.errors()) {
+				
+
+			System.out.println(error.message());
 			validation.keep();
             show(idKlijenta);
+
+			}
 
 			}
 	}
