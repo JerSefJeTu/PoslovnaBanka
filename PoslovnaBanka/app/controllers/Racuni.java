@@ -14,8 +14,8 @@ import play.mvc.With;
 @With(Secure.class)
 public class Racuni extends Controller {
 
-    public static void show(long idKlijenta){
-    	List<Racun> racuni = Racun.find("klijent_id", idKlijenta).fetch();
+    public static void show(){
+    	List<Racun> racuni = Racun.find("klijent_id", session.get("idKlijenta")).fetch();
   
     	
     

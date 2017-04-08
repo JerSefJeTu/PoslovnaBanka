@@ -29,14 +29,14 @@ public class Application extends Controller {
 				System.out.println(racun.brojRacuna);
 			}
 
-    		Racuni.show(klijent.id);
+    		Racuni.show();
     	}else{
     		FizickoLice klijent = (FizickoLice) user;
     		session.put("ime", klijent.ime);
     		session.put("prezime", klijent.prezime);
     		session.put("naziv", "");
     		session.put("idKlijenta", klijent.id);
-    		Racuni.show(klijent.id);
+    		Racuni.show();
     		
     		for (Racun racun : klijent.racuni) {
 				System.out.println(racun.brojRacuna);

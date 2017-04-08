@@ -10,8 +10,8 @@ import play.mvc.Controller;
 
 public class Placanje extends Controller {
 	
-	public static void show(long idKlijenta){
-		List<Racun> racuni = Racun.find("klijent_id", idKlijenta).fetch();
+	public static void show(){
+		List<Racun> racuni = Racun.find("klijent_id", session.get("idKlijenta")).fetch();
     
     	
     
