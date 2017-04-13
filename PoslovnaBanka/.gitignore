@@ -10,6 +10,8 @@
 /.project
 /.classpath
 /conf/application.conf
-/tmp/*
+/tmp/bytecode/*
 /modules/*
 PoslovnaBanka.iws
+.settings/
+

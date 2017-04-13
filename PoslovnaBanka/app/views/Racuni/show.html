@@ -10,9 +10,6 @@
     <a href="@{RacunDetalji.show(racun.id)}" class="brojRacuna">${racun.brojRacuna}</a>
     #{list items:racun.dnevnoStanjeRacuna, as:'dnevnoStanjeRacuna'}
     
-    
-    
-    
     #{if dnevnoStanjeRacuna_isLast == true }
     <div class="poslednjaPromenaRacuna">${dnevnoStanjeRacuna.novoStanje-dnevnoStanjeRacuna.prethodnoStanje}</div>
     <div class="stanjeRacuna">${dnevnoStanjeRacuna.novoStanje}</div>

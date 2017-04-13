@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="81d759a4-4223-4c77-81dd-b517b0fe927d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="datumPocetka" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="datumZavrsetka" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="username" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     klijent.`id` AS klijent_id,
+     klijent.`adresa` AS klijent_adresa,
+     klijent.`eMail` AS klijent_eMail,
+     klijent.`fax` AS klijent_fax,
+     klijent.`password` AS klijent_password,
+     klijent.`telefon` AS klijent_telefon,
+     klijent.`username` AS klijent_username,
+     klijent.`mesto_id` AS klijent_mesto_id,
+     pravno_lice.`MATICNI_BROJ` AS pravno_lice_MATICNI_BROJ,
+     pravno_lice.`NAZIV` AS pravno_lice_NAZIV,
+     pravno_lice.`PIB` AS pravno_lice_PIB,
+     pravno_lice.`KLIJENT_ID` AS pravno_lice_KLIJENT_ID,
+     pravno_lice.`ID_DELATNOSTI` AS pravno_lice_ID_DELATNOSTI,
+     racun.`id` AS racun_id,
+     racun.`brojRacuna` AS racun_brojRacuna,
+     racun.`datumOtvaranja` AS racun_datumOtvaranja,
+     racun.`banka_id` AS racun_banka_id,
+     racun.`klijent_id` AS racun_klijent_id,
+     dnevnostanjeracuna.`id` AS dnevnostanjeracuna_id,
+     dnevnostanjeracuna.`datum` AS dnevnostanjeracuna_datum,
+     dnevnostanjeracuna.`novoStanje` AS dnevnostanjeracuna_novoStanje,
+     dnevnostanjeracuna.`prethodnoStanje` AS dnevnostanjeracuna_prethodnoStanje,
+     dnevnostanjeracuna.`prometUKorist` AS dnevnostanjeracuna_prometUKorist,
+     dnevnostanjeracuna.`racun_id` AS dnevnostanjeracuna_racun_id
+FROM
+     `klijent` klijent INNER JOIN `pravno_lice` pravno_lice ON klijent.`id` = pravno_lice.`KLIJENT_ID`
+     INNER JOIN `racun` racun ON klijent.`id` = racun.`klijent_id`
+     INNER JOIN `dnevnostanjeracuna` dnevnostanjeracuna ON racun.`id` = dnevnostanjeracuna.`racun_id`
+where
+	dnevnostanjeracuna.`datum` between $P{datumPocetka} and $P{datumZavrsetka} and klijent.`username` = $P{username}]]>
+	</queryString>
+	<field name="klijent_id" class="java.lang.Long"/>
+	<field name="klijent_adresa" class="java.lang.String"/>
+	<field name="klijent_eMail" class="java.lang.String"/>
+	<field name="klijent_fax" class="java.lang.String"/>
+	<field name="klijent_password" class="java.lang.String"/>
+	<field name="klijent_telefon" class="java.lang.String"/>
+	<field name="klijent_username" class="java.lang.String"/>
+	<field name="klijent_mesto_id" class="java.lang.Long"/>
+	<field name="pravno_lice_MATICNI_BROJ" class="java.lang.String"/>
+	<field name="pravno_lice_NAZIV" class="java.lang.String"/>
+	<field name="pravno_lice_PIB" class="java.lang.String"/>
+	<field name="pravno_lice_KLIJENT_ID" class="java.lang.Long"/>
+	<field name="pravno_lice_ID_DELATNOSTI" class="java.lang.Long"/>
+	<field name="racun_id" class="java.lang.Long"/>
+	<field name="racun_brojRacuna" class="java.lang.String"/>
+	<field name="racun_datumOtvaranja" class="java.sql.Timestamp"/>
+	<field name="racun_banka_id" class="java.lang.Long"/>
+	<field name="racun_klijent_id" class="java.lang.Long"/>
+	<field name="dnevnostanjeracuna_id" class="java.lang.Long"/>
+	<field name="dnevnostanjeracuna_datum" class="java.sql.Timestamp"/>
+	<field name="dnevnostanjeracuna_novoStanje" class="java.lang.Double"/>
+	<field name="dnevnostanjeracuna_prethodnoStanje" class="java.lang.Double"/>
+	<field name="dnevnostanjeracuna_prometUKorist" class="java.lang.Double"/>
+	<field name="dnevnostanjeracuna_racun_id" class="java.lang.Long"/>
+	<group name="Broj racuna">
+		<groupExpression><![CDATA[$F{racun_brojRacuna}]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<textField>
+					<reportElement x="126" y="0" width="100" height="20" uuid="fd8e30b2-493f-4bb2-a6ec-3d5f9ba61695"/>
+					<textFieldExpression><![CDATA[$F{racun_brojRacuna}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="26" y="0" width="100" height="20" uuid="d18e726e-4bc5-43f8-94f3-39450b439688"/>
+					<text><![CDATA[Broj racuna]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="160" y="0" width="100" height="20" uuid="c3a73cca-7058-4eed-b8a3-1da4b2bf8a9a"/>
+				<textFieldExpression><![CDATA[$P{datumPocetka}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="0" width="100" height="20" uuid="de1263ed-3294-4614-97e5-ef9a6c6ac9db"/>
+				<textFieldExpression><![CDATA[$P{datumZavrsetka}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="60" y="0" width="100" height="20" uuid="778c14dd-480f-48b9-8375-da9a4ab9f86f"/>
+				<text><![CDATA[Izvestaj za datume]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="0" width="100" height="20" uuid="82c1fee8-469a-4d44-8584-7b04b6a26667"/>
+				<text><![CDATA[do]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="37" width="100" height="20" uuid="891791c8-7929-423e-96ac-742d28a1e6b3"/>
+				<text><![CDATA[za]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="263" y="37" width="100" height="20" uuid="fb21abe9-7862-4f2b-b034-9cc78183ece9"/>
+				<textFieldExpression><![CDATA[$F{pravno_lice_NAZIV}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="213" y="0" width="100" height="20" uuid="ff88f12c-e0c4-4290-8c45-1f98b328e77c"/>
+				<textFieldExpression><![CDATA[$F{dnevnostanjeracuna_datum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="89" y="0" width="100" height="20" uuid="46aa69da-5f8c-4e5e-b0f8-dde5dde776c4"/>
+				<text><![CDATA[Datum promene]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="89" y="30" width="100" height="20" uuid="cfec6e44-2c82-4acf-9391-3eafe7b9f774"/>
+				<text><![CDATA[Novo stanje]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="213" y="30" width="100" height="20" uuid="fdcf4bd9-c29e-4f74-9865-1e5c0258884c"/>
+				<textFieldExpression><![CDATA[$F{dnevnostanjeracuna_novoStanje}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="455" y="34" width="100" height="20" uuid="ad3023c3-210d-4cc6-bb9a-26faf3a4adb3"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

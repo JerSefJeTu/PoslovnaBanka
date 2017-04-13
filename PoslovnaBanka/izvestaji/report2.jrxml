@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fa07de46-f0ca-4f73-9b79-b0a679c79a12">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="96"/>
+	<parameter name="swiftKod" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     banka.`id` AS banka_id,
+     banka.`PIB` AS banka_PIB,
+     banka.`adresaBanke` AS banka_adresaBanke,
+     banka.`nazivBanke` AS banka_nazivBanke,
+     banka.`obracunskiRacun` AS banka_obracunskiRacun,
+     banka.`sifraBanke` AS banka_sifraBanke,
+     banka.`swiftKod` AS banka_swiftKod,
+     banka.`telefonBanke` AS banka_telefonBanke,
+     banka.`mesto_id` AS banka_mesto_id,
+     racun.`id` AS racun_id,
+     racun.`brojRacuna` AS racun_brojRacuna,
+     racun.`datumOtvaranja` AS racun_datumOtvaranja,
+     racun.`banka_id` AS racun_banka_id,
+     racun.`klijent_id` AS racun_klijent_id,
+     dnevnostanjeracuna.`id` AS dnevnostanjeracuna_id,
+     dnevnostanjeracuna.`racun_id` AS dnevnostanjeracuna_racun_id
+FROM
+     `banka` banka INNER JOIN `racun` racun ON banka.`id` = racun.`banka_id`
+     INNER JOIN `dnevnostanjeracuna` dnevnostanjeracuna ON racun.`id` = dnevnostanjeracuna.`racun_id`
+WHERE
+     banka.`swiftKod` = $P{swiftKod}]]>
+	</queryString>
+	<field name="banka_id" class="java.lang.Long"/>
+	<field name="banka_PIB" class="java.lang.Integer"/>
+	<field name="banka_adresaBanke" class="java.lang.String"/>
+	<field name="banka_nazivBanke" class="java.lang.String"/>
+	<field name="banka_obracunskiRacun" class="java.lang.String"/>
+	<field name="banka_sifraBanke" class="java.lang.Integer"/>
+	<field name="banka_swiftKod" class="java.lang.String"/>
+	<field name="banka_telefonBanke" class="java.lang.String"/>
+	<field name="banka_mesto_id" class="java.lang.Long"/>
+	<field name="racun_id" class="java.lang.Long"/>
+	<field name="racun_brojRacuna" class="java.lang.String"/>
+	<field name="racun_datumOtvaranja" class="java.sql.Timestamp"/>
+	<field name="racun_banka_id" class="java.lang.Long"/>
+	<field name="racun_klijent_id" class="java.lang.Long"/>
+	<field name="dnevnostanjeracuna_id" class="java.lang.Long"/>
+	<field name="dnevnostanjeracuna_racun_id" class="java.lang.Long"/>
+	<group name="Naziv banke">
+		<groupExpression><![CDATA[$F{banka_nazivBanke}]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<textField>
+					<reportElement x="162" y="11" width="100" height="20" uuid="e92981d8-7212-4288-a50f-c2fcc92302d5"/>
+					<textFieldExpression><![CDATA[$F{banka_nazivBanke}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="39" y="11" width="100" height="20" uuid="8f812449-822f-4b98-b2b7-27639613150b"/>
+					<text><![CDATA[Naziv banke]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="62" y="17" width="293" height="20" uuid="2e3b1714-3d1a-4356-ae59-04b765ec7b40"/>
+				<text><![CDATA[Izvod svih racuna za zadatu banku]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="62" y="37" width="100" height="20" uuid="e7e3a273-1673-4074-a4c2-94cfba51269e"/>
+				<text><![CDATA[Banka]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="162" y="37" width="100" height="20" uuid="ffe2cc6a-c2c6-4e1d-bf5f-a61fdb40d92e"/>
+				<textFieldExpression><![CDATA[$F{banka_nazivBanke}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="162" y="11" width="100" height="20" uuid="bc5e65d2-4532-473f-9727-cdd87f99561e"/>
+				<textFieldExpression><![CDATA[$F{racun_brojRacuna}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="39" y="11" width="100" height="20" uuid="7d342fe5-5ad9-4590-9006-9c7f51e60846"/>
+				<text><![CDATA[racun_brojRacuna]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

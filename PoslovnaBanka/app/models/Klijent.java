@@ -32,7 +32,7 @@ public abstract class Klijent extends Model {
     @Column(name = "PASSWORD", nullable = false)
     public String password;
 
-    @OneToMany(mappedBy = "klijent")
+    @OneToMany(mappedBy="klijent")
     public List<Racun> racuni;
 
     @ManyToOne

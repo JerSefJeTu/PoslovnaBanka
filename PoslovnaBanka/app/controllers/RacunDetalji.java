@@ -41,9 +41,8 @@ public class RacunDetalji extends Controller {
 			System.out.println("naloziUKorist");
 			System.out.println(nalog.duznik);
 		}
-		
+
 		render(racun,naloziNaTeret,naloziUKorist);
-		
 	}
 
 }
