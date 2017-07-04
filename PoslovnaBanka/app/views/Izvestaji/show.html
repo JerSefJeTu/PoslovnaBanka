@@ -5,8 +5,8 @@
 
 <div>
     <p>Izvestaji</p>
-    <button href="" id="poslednjaUplataDetaljno">INFO</button>
-    <button href="" id="poslednjaIsplataDetaljno">INFO</button>
+    <button href="" id="poslednjaUplataDetaljno">Izvestaj za odredjeni period</button>
+    <button href="" id="poslednjaIsplataDetaljno">Izvestaj za banku</button>
 
     <div id="myModalInfoUplata" class="modal">
         <!-- Modal content -->
@@ -47,7 +47,7 @@
             <form action="@{Izvestaji.report2()}">
                 <p>
                     #{field 'swiftKod'}
-                    <label for = "${field.id}">Pocetni datum</label>
+                    <label for = "${field.id}">Unesite swift kod</label>
                     <input type = "text" name = "${field.name}" id = "${field.id}"/>
                     #{/}
 
