@@ -1,21 +1,16 @@
 package controllers;
 
-import models.Banka;
-import models.DnevnoStanjeRacuna;
 import models.FizickoLice;
 import models.Klijent;
+
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
-import play.data.validation.Required;
 import play.mvc.Controller;
 import java.sql.DriverManager;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-
 
 /**
  * Created by Djordje on 4/7/2017.
