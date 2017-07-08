@@ -20,6 +20,8 @@ header {
     background-repeat: no-repeat;
     background-position: center;
 }
+
+
 #loginHeader {
 	float: right;
     position: relative;
@@ -249,4 +251,9 @@ tr:nth-child(odd)  {
 }
 #nalogButtons button {
 	background-color: rgba(220,208,192,0.4);
+}
+#izvestajHolder{
+	float:left;
+	margin-left:33%;
+	margin-bottom:3%;
 }

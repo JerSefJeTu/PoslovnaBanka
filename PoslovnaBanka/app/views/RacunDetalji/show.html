@@ -55,8 +55,8 @@
 </div>
 <div id="detailButtonHolder">
    <a href="" class="button">Provera uplata</a>
-   <a href="" class="button">Pregled plaćanja</a>
-   <a href="" class="button">Gačenje računa</a>
+   <a href="@{PregledPlacanja.show()}" class="button">Pregled plaćanja</a>
+   <a href="" class="button">Gašenje računa</a>
 </div>
 
 
@@ -70,11 +70,11 @@
             <form action="">
                 <div id="nalog">
                     <div id="nalogL">
-                        Dužnik - nalogodavac
+                        DuÅ¾nik - nalogodavac
                         <br>
                         <input type="text" id="duznik" value="${nalog.duznik}" readonly="readonly" >
                         <br>
-                        Svrha plaćanja
+                        Svrha plaÄ‡anja
                         <br>
                         <input type="text" id="svrhaPlacanja" value="${nalog.svrhaPlacanja}" readonly="readonly">
                         <br>
@@ -83,7 +83,7 @@
                         <input type="text" id="primalac" value="${nalog.primalac}" readonly="readonly">
                     </div>
                     <div id="nalogR">
-                        Šifra plaćanja&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Valuta
+                        Å ifra plaÄ‡anja&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Valuta
                         <br>
                         <input type="text" id="sifraPlacanja" size="3" maxlength="3" value="${nalog.sifraPlacanja}">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="valuta" value="RSD" size="3" maxlength="3">
@@ -92,11 +92,11 @@
                         <br>
                         <input type="number" min="0" id="iznos" value="${nalog.iznos}">
                         <br>
-                        Račun dužnika - nalogodavca
+                        Račun duÅ¾nika - nalogodavca
                         <br>
                         <input type="text" id="racunDuznika" value="${nalog.racunduznika}" readonly="readonly">
                         <br>
-                        Model i poziv na broj zaduženja
+                        Model i poziv na broj zaduÅ¾enja
                         <br>
                         <input type="text" id="modelZaduzenja" size="5" maxlength="5" value="${nalog.modelZaduzenja}" readonly="readonly">
                         <input type="text" id="pozivNaBrojZaduzenja" value="${nalog.pozivNaBrojZaduzenja}" readonly="readonly">
@@ -128,11 +128,11 @@
             <form action="">
                 <div id="nalog">
                     <div id="nalogL">
-                        Dužnik - nalogodavac
+                        DuÅ¾nik - nalogodavac
                         <br>
                         <input type="text" id="duznik" value="${nalog.duznik}" readonly="readonly">
                         <br>
-                        Svrha plaćanja
+                        Svrha plaÄ‡anja
                         <br>
                         <input type="text" id="svrhaPlacanja" value="${nalog.svrhaPlacanja}" readonly="readonly">
                         <br>
@@ -141,7 +141,7 @@
                         <input type="text" id="primalac" value="${nalog.primalac}" readonly="readonly">
                     </div>
                     <div id="nalogR">
-                        Šifra plaćanja&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Valuta
+                        Å ifra plaÄ‡anja&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Valuta
                         <br>
                         <input type="text" id="sifraPlacanja" size="3" maxlength="3" value="${nalog.sifraPlacanja}" readonly="readonly">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="valuta" value="RSD" size="3" maxlength="3">
@@ -150,11 +150,11 @@
                         <br>
                         <input type="number" min="0" id="iznos" value="${nalog.iznos}" readonly="readonly">
                         <br>
-                        Račun dužnika - nalogodavca
+                        Račun duÅ¾nika - nalogodavca
                         <br>
                         <input type="text" id="racunDuznika" value="${nalog.racunduznika}" readonly="readonly">
                         <br>
-                        Model i poziv na broj zaduženja
+                        Model i poziv na broj zaduÅ¾enja
                         <br>
                         <input type="text" id="modelZaduzenja" size="5" maxlength="5" value="${nalog.modelZaduzenja}" readonly="readonly">
                         <input type="text" id="pozivNaBrojZaduzenja" value="${nalog.pozivNaBrojZaduzenja}" readonly="readonly">
