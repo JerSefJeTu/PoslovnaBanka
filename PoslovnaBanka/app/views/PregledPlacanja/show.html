@@ -1,14 +1,18 @@
 #{extends 'TempViewFolder/template.html' /}
-<div id="mainTitle">IZVEÅ TAJI</div>
-<div id="datePickerHolder">Izaberite poÄ�etni datum: <input id="pocetniDatum" type="date" multiple="false" ><br>Izaberite krajnji datum: &nbsp;<input type="date" multiple="false" id="krajnjiDatum"><button class="button" id="datePickerButton">PrikaÅ¾i</button>
+<div id="mainTitle">PREGLED PLAĆANJA</div>
+#{form @PregledPlacanja.filter()}
+<div id="datePickerHolder">Izaberite početni datum: <input id="pocetniDatum" type="date" multiple="false" name="pocetniDatum" ><br>Izaberite krajnji datum: &nbsp;<input type="date" multiple="false" id="krajnjiDatum" name="krajnjiDatum"><button class="button" id="datePickerButton">Prikaži</button>
 </div>
+#{/form}
 <div id="izvestajHolder">
   <table id="izvestajTable">
-      <thead>Izvestaj za raÄ�un: 213-123123123-33</thead>
+      <thead>Izvestaj za račun: 213-123123123-33</thead>
       <tbody>
+      #{list items:naloziDnevnogStanja, as:'nalog'}
           <tr class="uplata">
-              <td>01.01.2012.</td><td>Razlog uplate blabla</td><td>350.00</td>
+              <td>${nalog.datumNaloga}</td><td>${nalog.svrhaPlacanja}</td><td>${nalog.iznos}</td>
           </tr>
+          #{/list}
           <tr class="uplata">
               <td>01.02.2012.</td><td>Razlog uplate blabla</td><td>350.00</td>
           </tr>
