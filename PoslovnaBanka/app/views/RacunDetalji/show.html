@@ -2,19 +2,19 @@
 <link rel="stylesheet"  type="text/css" href="@{'/public/stylesheets/modal.css'}"/>
 <script type="text/javascript" src="@{'/public/javascripts/jquery-3.1.1.min.js'}"></script>
 <script type="text/javascript" src="@{'/public/javascripts/modal.js'}"></script>
-<div id="mainTitle">STANJE I OSNOVNI PODACI O RAÄŒUNU</div>
+<div id="mainTitle">STANJE I OSNOVNI PODACI O RAČUNU</div>
 <table id="detaljiRacuna">
    <thead>
-       <td id="brojRacunaL">Broj raÄ�una:</td>
+       <td id="brojRacunaL">Broj računa:</td>
        <td id="brojRacunaR">${racun.brojRacuna}</td>
    </thead>
    <tbody>
        <tr>
-           <td id="vlasnikRacunaL">Vlasnik raÄ�una:</td>
+           <td id="vlasnikRacunaL">Vlasnik računa:</td>
            <td id="vlasnikRacunaR"> ${session.ime} ${session.prezime} ${session.naziv} </td>
        </tr>
        <tr>
-           <td id="datumOtvaranjaL">Datum otvaranja raÄ�una:</td>
+           <td id="datumOtvaranjaL">Datum otvaranja računa:</td>
            <td id="datumOtvaranjaR">${racun.datumOtvaranja}</td>
        </tr>
        <tr>
@@ -92,7 +92,7 @@
                         <br>
                         <input type="number" min="0" id="iznos" value="${nalog.iznos}">
                         <br>
-                        RaÄ�un duÅ¾nika - nalogodavca
+                        Račun duÅ¾nika - nalogodavca
                         <br>
                         <input type="text" id="racunDuznika" value="${nalog.racunduznika}" readonly="readonly">
                         <br>
@@ -101,7 +101,7 @@
                         <input type="text" id="modelZaduzenja" size="5" maxlength="5" value="${nalog.modelZaduzenja}" readonly="readonly">
                         <input type="text" id="pozivNaBrojZaduzenja" value="${nalog.pozivNaBrojZaduzenja}" readonly="readonly">
                         <br>
-                        RaÄ�un poverioca - primaoca
+                        Račun poverioca - primaoca
                         <br>
                         <input type="text" id="racunPrimaoca" value="${nalog.racunPoverioca}" readonly="readonly">
                         <br>
@@ -150,7 +150,7 @@
                         <br>
                         <input type="number" min="0" id="iznos" value="${nalog.iznos}" readonly="readonly">
                         <br>
-                        RaÄ�un duÅ¾nika - nalogodavca
+                        Račun duÅ¾nika - nalogodavca
                         <br>
                         <input type="text" id="racunDuznika" value="${nalog.racunduznika}" readonly="readonly">
                         <br>
@@ -159,7 +159,7 @@
                         <input type="text" id="modelZaduzenja" size="5" maxlength="5" value="${nalog.modelZaduzenja}" readonly="readonly">
                         <input type="text" id="pozivNaBrojZaduzenja" value="${nalog.pozivNaBrojZaduzenja}" readonly="readonly">
                         <br>
-                        RaÄ�un poverioca - primaoca
+                        Račun poverioca - primaoca
                         <br>
                         <input type="text" id="racunPrimaoca" value="${nalog.racunPoverioca}" readonly="readonly">
                         <br>

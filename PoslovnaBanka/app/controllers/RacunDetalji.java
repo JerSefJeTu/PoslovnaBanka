@@ -20,6 +20,7 @@ public class RacunDetalji extends Controller {
 		List<Nalog> naloziUKorist = new ArrayList<Nalog>();
 		Racun racun = Racun.find("id", idRacuna).first();
 		session.put("idRacuna", racun.id);
+		session.put("brojRacuna", racun.brojRacuna);
 		int brojDnevnihStanja = 0;
 		brojDnevnihStanja= racun.dnevnoStanjeRacuna.size();
 		DnevnoStanjeRacuna poslednjednevnoStanjeRacuna= racun.dnevnoStanjeRacuna.get(brojDnevnihStanja-1);
