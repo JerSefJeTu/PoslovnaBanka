@@ -5,6 +5,9 @@ import play.mvc.*;
 import play.mvc.Scope.Session;
 
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import models.*;
 
@@ -43,7 +46,17 @@ public class Application extends Controller {
 			}
     	}
     	
-    	
+    	Runnable runnable = new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				System.out.println("HI");
+			}
+		};
+		
+		ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+		executor.scheduleAtFixedRate(runnable, 0, 3, TimeUnit.SECONDS);
     	
     }
 

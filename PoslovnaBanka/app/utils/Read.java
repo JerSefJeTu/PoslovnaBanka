@@ -211,7 +211,7 @@ public class Read {
                 "banka");
 
         String duznik= getClient(duznikEl, "klijent");
-        String poverilac = getClient(poverilacEl, "klijent");
+        String poverilac = poverilacEl.getTextContent();
 
 
         String svrhaPlacanja = nalogEl
@@ -251,7 +251,7 @@ public class Read {
                 .getTextContent();
 
         Racun racunDuznik = (Racun) Racun.find("byBrojRacuna", zaduzenjeRacun)
-                .fetch();
+                .fetch().get(0);
 
 
         //<<<ODOBRENJE>>>
@@ -318,6 +318,15 @@ public class Read {
         dnevnoStanjeRacuna.datum = date;
         dnevnoStanjeRacuna.save();
     }
+    
+    private static String getClientCreditor(Element client,
+    										String elementName) {
+    	
+    	Element klijentEl = (Element) client
+                .getElementsByTagName(elementName)
+                .item(0);
+    	return klijentEl.getTextContent();
+    }
 
     private static String getClient(Element client,
                                     String elementName) {
@@ -365,7 +374,7 @@ public class Read {
                 .item(0)
                 .getTextContent();
         Banka banka = (Banka) Banka.find("bySwiftKod", swift)
-                .fetch();
+                .fetch().get(0);
 
         return banka;
     }
@@ -389,7 +398,7 @@ public class Read {
     }
 
     private static Date getDate(String dateStr) {
-        DateFormat format = new SimpleDateFormat("dd.MM.yyyy.");
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy.");
         Date date = null;
         try {
             date = format.parse(dateStr);
@@ -414,8 +423,9 @@ public class Read {
         try {
             for(File file : files) {
                 document = documentBuilder.parse(file);
+                System.out.println(file.getName().substring(0, 5));
                 if(finishPayment(document, file.getName().substring(0, 5))) {
-                    file.renameTo(new File(obradjeneUplatnice + "/"
+                    file.renameTo(new File(neobradjeneUplatnice + "/"
                             + file.getName()));
                     file.delete();
                 }
@@ -435,14 +445,11 @@ public class Read {
     }
 
     private static File[] findFiles(String filePrefix) {
-        File[] files = neobradjenoDir
-                .listFiles(new FilenameFilter() {
-                    @Override
-                    public boolean accept(File dir, String name) {
-                        return name.startsWith(filePrefix) &&
-                                name.endsWith(".xml");
-                    }
-                });
+        File[] files = neobradjenoDir.listFiles();
+        for(int i = 0; i < files.length; i++) {
+        	System.out.println(files[i].getName());
+        }
+        
         return files;
     }
 

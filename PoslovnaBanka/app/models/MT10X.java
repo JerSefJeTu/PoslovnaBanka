@@ -41,7 +41,7 @@ public class MT10X extends Model {
    public boolean obradjeno;
    @OneToMany(mappedBy = "mt10x", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
    public List<Nalog> nalog;
-   @ManyToOne(fetch = FetchType.EAGER)
+   @ManyToOne
    public Clearing clearing;
 
    public MT10X() {
@@ -62,4 +62,13 @@ public class MT10X extends Model {
       this.obradjeno = obradjeno;
       this.nalog = nalog;
    }
+
+@Override
+public String toString() {
+	return "MT10X [datum=" + datum + ", ukupanIznos=" + ukupanIznos + ", vrstaPoruke=" + vrstaPoruke + ", swiftKod1="
+			+ swiftKod1 + ", swiftKod2=" + swiftKod2 + ", obracunskiRacun1=" + obracunskiRacun1 + ", obracunskiRacun2="
+			+ obracunskiRacun2 + ", obradjeno=" + obradjeno + "]";
+}
+   
+   
 }

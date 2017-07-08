@@ -47,4 +47,12 @@ public class Banka extends Model {
 		this.obracunskiRacun = obracunskiRacun;
 	}
 
+	@Override
+	public String toString() {
+		return "Banka [sifraBanke=" + sifraBanke + ", nazivBanke=" + nazivBanke + ", adresaBanke=" + adresaBanke
+				+ ", telefonBanke=" + telefonBanke + ", PIB=" + PIB + ", swiftKod=" + swiftKod + ", obracunskiRacun="
+				+ obracunskiRacun + ", mesto=" + mesto + "]";
+	}
+
+    
 }

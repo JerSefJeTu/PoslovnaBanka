@@ -43,10 +43,16 @@ public class Placanje extends Controller {
 		
 		MT10X mt10x = null;
 		if(messageType.equals("MT102")) {
-			mt10x = (MT10X) MT10X.find("bySwiftKod2", bankaDuznika.swiftKod)
-			 		 .fetch()
-			 		 .get(0);
-			if(mt10x == null) {
+			List<MT10X> list = MT10X.find("bySwiftKod2", bankaPoverioca.swiftKod)
+			 		 .fetch();
+			
+			if(list.size() < 1 || list == null) {
+				mt10x = null;
+			} else {
+				mt10x = list.get(0);
+			}
+			
+			if(mt10x == null || mt10x.obradjeno == true) {
 				// MT102
 				mt10x = new MT10X();
 				mt10x.datum = new Date();
@@ -57,15 +63,13 @@ public class Placanje extends Controller {
 				mt10x.nalog.add(nalog);
 				mt10x.ukupanIznos = nalog.iznos;
 				mt10x.vrstaPoruke = "MT102";
-				mt10x.clearing = new Clearing();
-				mt10x.clearing.datumIVreme = new Date();
-				mt10x.clearing.poruke.add(mt10x);
+				mt10x.clearing = null;
 			} else {
 				mt10x.nalog.add(nalog);
-				mt10x.clearing.poruke.add(mt10x);
 				for(Nalog n : mt10x.nalog) {
 					mt10x.ukupanIznos += n.iznos;
 				}
+				mt10x.clearing = null;
 			}
 		} else {
 			// MT103 - RTGS

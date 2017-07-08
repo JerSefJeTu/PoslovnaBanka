@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 @Entity
 public class Clearing extends Model {
 
@@ -18,13 +19,13 @@ public class Clearing extends Model {
 	
 	@OneToMany(mappedBy = "clearing", cascade = {CascadeType.ALL})
 	@Column(nullable=false)
-	public Collection<MT10X> poruke;
+	public List<MT10X> poruke;
 
 	public Clearing(){
 		this.poruke = new ArrayList<>();
 	}
 	
-	public Clearing(Date datumIVreme, Collection<MT10X> poruke) {
+	public Clearing(Date datumIVreme, List<MT10X> poruke) {
 		super();
 		this.datumIVreme = datumIVreme;
 		this.poruke = poruke;
