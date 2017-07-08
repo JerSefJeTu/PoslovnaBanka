@@ -5,6 +5,7 @@ import play.db.jpa.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import java.util.Date;
 /***********************************************************************
@@ -62,9 +63,9 @@ public class Nalog extends Model {
    public Date datumNaloga;
    
    @Column(nullable = false)
-   public boolean sacuvan;
+   public boolean obradjen;
 
-   @ManyToOne
+   @ManyToOne(fetch = FetchType.EAGER)
    public DnevnoStanjeRacuna dnevnoStanjeRacuna;
 
    @ManyToOne
@@ -73,7 +74,7 @@ public class Nalog extends Model {
    public Nalog() {
    }
 
-   public Nalog(String racunduznika, String racunPoverioca, String pozivNaBrojZaduzenja, String pozivNaBrojOdobrenja, String modelZaduzenja, String modelOdobrenja, double iznos, String duznik, String primalac, String svrhaPlacanja, Date datumNaloga,boolean sacuvan){ //,DnevnoStanjeRacuna dnevnoStanjeRacuna) {
+   public Nalog(String racunduznika, String racunPoverioca, String pozivNaBrojZaduzenja, String pozivNaBrojOdobrenja, String modelZaduzenja, String modelOdobrenja, double iznos, String duznik, String primalac, String svrhaPlacanja, Date datumNaloga,boolean obradjen){ //,DnevnoStanjeRacuna dnevnoStanjeRacuna) {
       super();
 	   this.racunduznika = racunduznika;
       this.racunPoverioca = racunPoverioca;
@@ -86,7 +87,7 @@ public class Nalog extends Model {
       this.primalac = primalac;
       this.svrhaPlacanja = svrhaPlacanja;
       this.datumNaloga = datumNaloga;
-      this.sacuvan=sacuvan;
+      this.obradjen=obradjen;
 //      this.dNEVNO_STANJE_RACUNA = dnevnoStanjeRacuna;
    }
 
