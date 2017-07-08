@@ -79,37 +79,28 @@ public class Write {
         writeToFile(root, mt102.id, "mt102");
     }
 
-    private static List<Klijent> findClients(Nalog account) {
-        Racun racunDuznika = (Racun)Racun.find("byBrojRacuna", account.racunduznika).fetch();
-        Racun racunPoverioca = (Racun)Racun.find("byBrojRacuna", account.racunPoverioca).fetch();
-
-        List<Klijent> list = new ArrayList<Klijent>();
+    private static Klijent findClient(Nalog account) {
+        Racun racunDuznika = (Racun)Racun.find("byBrojRacuna", account.racunduznika)
+        		.fetch().get(0);
 
         //DUZNIK
         Klijent duznik = Klijent.findById(racunDuznika.klijent.id);
 
-        //POVERILAC
-        Klijent poverilac = Klijent.findById(racunPoverioca.klijent.id);
-
-        list.add(duznik);
-        list.add(poverilac);
-
-        return list;
+        return duznik;
     }
 
     private static Element createAccountMT102(Nalog account) {
 
-        List<Klijent> clients = findClients(account);
+        Klijent klijentDuznik = findClient(account);
 
-        Klijent klijentDuznik = clients.get(0);
-        Klijent klijentPoverilac = clients.get(1);
+        String klijentPoverilac = account.primalac;
 
         Element nalog = document.createElement("nalog");
         nalog.setAttributeNode(document.createAttribute("idNaloga"));
         nalog.setAttribute("idNaloga", String.valueOf(account.id));
 
         Element duznik = createClient(klijentDuznik, "duznik");
-        Element poverilac = createClient(klijentPoverilac, "poverilac");
+        Element poverilac = createClientCreditor(klijentPoverilac);
         Element podaciNalog = createAccountData(account);
 
         Element uplata = document.createElement("uplata");
@@ -161,11 +152,12 @@ public class Write {
     }
 
     public static void createMT103toXML(MT10X mt103) {
-        List<Klijent> clients = findClients(mt103.nalog.get(0));
+    	
+        Klijent client = findClient(mt103.nalog.get(0));
 
-        Klijent klijentDuznik = clients.get(0);
+        Klijent klijentDuznik = client;
 
-        Klijent klijentPoverilac = clients.get(1);
+        String klijentPoverilac = mt103.nalog.get(0).primalac;
 
         Element banka = null;
         Element klijent = null;
@@ -190,7 +182,7 @@ public class Write {
         Element poverilac = document.createElement("poverilac");
         banka = createBank("banka",
                 mt103.swiftKod2, mt103.obracunskiRacun2);
-        klijent = createClient(klijentPoverilac, "klijent");
+        klijent = createClientCreditor(klijentPoverilac);
         poverilac.appendChild(banka);
         poverilac.appendChild(klijent);
 
@@ -369,6 +361,16 @@ public class Write {
 
     }
 
+    private static Element createClientCreditor(String client) {
+
+        Element klijent = document.createElement("poverilac");
+        Text klijentText = document.createTextNode(client);
+        klijent.appendChild(klijentText);
+
+        return klijent;
+
+    }
+    
     private static Element createLegalEntity(PravnoLice legalEntity, String tagName) {
         Element klijent = document.createElement(tagName);
 
