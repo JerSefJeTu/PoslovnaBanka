@@ -28,6 +28,7 @@ public class Placanje extends Controller {
 		if(messageType.equals("MT103")) {
 			Write.createMT103toXML(mt10x);
 		}
+		show();
 	}
 	
 	public static MT10X createMT10X(Nalog nalog, String messageType) {

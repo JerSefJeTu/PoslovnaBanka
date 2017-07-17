@@ -42,4 +42,15 @@ public class Racun extends Model {
       this.banka = banka;
       this.datumOtvaranja=datumOtvaranja;
    }
+
+   @Override
+   public String toString() {
+      return "Racun{" +
+              "brojRacuna='" + brojRacuna + '\'' +
+              ", dnevnoStanjeRacuna=" + dnevnoStanjeRacuna +
+              ", banka=" + banka +
+              ", klijent=" + klijent +
+              ", datumOtvaranja=" + datumOtvaranja +
+              '}';
+   }
 }

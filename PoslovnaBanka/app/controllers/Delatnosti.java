@@ -55,4 +55,8 @@ public class Delatnosti extends Controller {
         show("");
     }
 
+    public static void create(){
+        show("add");
+
+    }
 }

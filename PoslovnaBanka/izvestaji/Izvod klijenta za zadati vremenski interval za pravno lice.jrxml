@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Izvod klijenta za zadati vremenski interval za pravno lice" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6ffe8b40-5fd4-40e0-9d3d-f0f7eadf6d4c">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="185"/>
+	<property name="ireport.y" value="97"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -102,7 +102,7 @@ where
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="43"/>
+			<band height="3"/>
 		</groupFooter>
 	</group>
 	<group name="Group2">
@@ -191,10 +191,14 @@ where
 				<reportElement x="36" y="85" width="100" height="20" uuid="9fede397-b8d5-4a3a-afc2-8c5f2a5cadd6"/>
 				<textFieldExpression><![CDATA["Broj racuna"]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="36" y="2" width="100" height="20" uuid="57aee1a0-049e-46a6-b9b6-b824d8e3cf6c"/>
+				<text><![CDATA[racun_brojRacuna]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="62" splitType="Stretch">
+		<band height="65" splitType="Stretch">
 			<textField>
 				<reportElement x="102" y="42" width="100" height="20" uuid="870ae417-557c-4b3c-8820-cf4cd79472f1"/>
 				<textFieldExpression><![CDATA[$F{dnevnostanjeracuna_datum}]]></textFieldExpression>
@@ -226,10 +230,17 @@ where
 				<reportElement x="333" y="42" width="100" height="20" uuid="1911bb53-956e-4b82-baac-0b6a243f2abb"/>
 				<textFieldExpression><![CDATA[$F{dnevnostanjeracuna_novoStanje}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="1" y="42" width="100" height="20" uuid="636ffa97-46da-463f-9d1c-a3588a527a0f"/>
+				<textFieldExpression><![CDATA[$F{racun_brojRacuna}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="2" y="62" width="553" height="1" uuid="94db301a-30fb-4805-8c65-66a22d41ca38"/>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch">
+		<band height="11" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="7d29c444-d746-4a75-a150-fef279847870"/>
 				<graphicElement>

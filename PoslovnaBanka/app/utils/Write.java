@@ -81,7 +81,7 @@ public class Write {
 
     private static Klijent findClient(Nalog account) {
         Racun racunDuznika = (Racun)Racun.find("byBrojRacuna", account.racunduznika)
-        		.fetch().get(0);
+                .fetch().get(0);
 
         //DUZNIK
         Klijent duznik = Klijent.findById(racunDuznika.klijent.id);
@@ -152,7 +152,7 @@ public class Write {
     }
 
     public static void createMT103toXML(MT10X mt103) {
-    	
+
         Klijent client = findClient(mt103.nalog.get(0));
 
         Klijent klijentDuznik = client;
@@ -370,7 +370,7 @@ public class Write {
         return klijent;
 
     }
-    
+
     private static Element createLegalEntity(PravnoLice legalEntity, String tagName) {
         Element klijent = document.createElement(tagName);
 

@@ -16,6 +16,7 @@ public class Racuni extends Controller {
 
     public static void show(){
     	List<Racun> racuni = Racun.find("klijent_id", session.get("idKlijenta")).fetch();
+        System.out.println(racuni);
         render(racuni);
     }
 
