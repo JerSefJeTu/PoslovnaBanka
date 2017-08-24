@@ -5,6 +5,7 @@ import java.util.List;
 import models.DnevnoStanjeRacuna;
 import models.Klijent;
 import models.Racun;
+import play.data.validation.Required;
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -20,4 +21,22 @@ public class Racuni extends Controller {
         render(racuni);
     }
 
+    public static void filter(@Required String brojRacuna){
+        List<Racun> delatnosti = Racun.find("bybrojRacunaLike", "%"+ brojRacuna +"%").fetch();
+        String mode = "edit";
+        renderTemplate("Racuni/admin_show.html", delatnosti, mode);
+    }
+
+    public static void admin_show(String mode){
+        List<Racun> racuni = Racun.findAll();
+        System.out.println(racuni);
+        render(racuni);
+    }
+
+    public static void delete(long id){
+        Racun racun = Racun.findById(id);
+        System.out.println(id);
+        racun.delete();
+        show();
+    }
 }

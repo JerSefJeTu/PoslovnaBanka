@@ -1,0 +1,222 @@
+#{extends 'standardForm.html' /}
+#{set title:'Racuni' /}
+
+<script>
+    function sync(item) {
+        racunduznika = item.find(".racunduznika").html();
+        id = item.find(".id").html();
+        racunPoverioca = item.find(".racunPoverioca").html();
+        pozivNaBrojZaduzenja = item.find(".pozivNaBrojZaduzenja").html();
+        pozivNaBrojOdobrenja = item.find(".pozivNaBrojOdobrenja").html();
+        modelZaduzenja = item.find(".modelZaduzenja").html();
+        modelOdobrenja = item.find(".modelOdobrenja").html();
+        iznos = item.find(".iznos").html();
+        duznik = item.find(".duznik").html();
+        primalac = item.find(".primalac").html();
+        svrhaPlacanja = item.find(".svrhaPlacanja").html();
+        datumNaloga = item.find(".datumNaloga").html();
+        obradjen = item.find(".obradjen").html();
+        $("#racunduznika").val(racunduznika);
+        $("#racunPoverioca").val(racunPoverioca);
+        $("#id").val(id);
+        $("#pozivNaBrojZaduzenja").val(pozivNaBrojZaduzenja);
+        $("#pozivNaBrojOdobrenja").val(pozivNaBrojOdobrenja);
+        $("#modelZaduzenja").val(modelZaduzenja);
+        $("#modelOdobrenja").val(modelOdobrenja);
+        $("#iznos").val(iznos);
+        $("#duznik").val(duznik);
+        $("#primalac").val(primalac);
+        $("#svrhaPlacanja").val(svrhaPlacanja);
+        $("#datumNaloga").val(datumNaloga);
+        $("#obradjen").val(obradjen);
+    }
+
+</script>
+
+<p>
+<ul>
+    <li><a href="http://localhost:9000" id= "pickup"><img src="@{'/public/images/pocetna.png'}"/></a></li>
+    <li><a href="@{Delatnosti.show('')}" id= "refresh"><img src="@{'/public/images/refresh.gif'}"/></a></li>
+    <li><a href="@{Delatnosti.show('filter')}" id = "search"><img src="@{'/public/images/search.gif'}"/></a></li>
+    <li><a  id= "first"><img src="@{'/public/images/first.gif'}"/></a></li>
+    <li><a  id= "prev"><img src="@{'/public/images/prev.gif'}"/></a></li>
+    <li><a  id= "next"><img src="@{'/public/images/next.gif'}"/></a></li>
+    <li><a  id= "last"><img src="@{'/public/images/last.gif'}"/></a></li>
+    <li><a href="@{Delatnosti.show('add')}" id = "add"><img src="@{'/public/images/add.gif'}"/></a></li>
+    <li><a href="@{Delatnosti.show('remove')}" id = "remove"><img src="@{'/public/images/remove.gif'}"/></a></li>
+</ul>
+</p>
+
+<h1>Pregled placanja</h1>
+
+<table>
+    <tr class = "header">
+        <th>racunduznika</th>
+        <th>racunPoverioca</th>
+        <th>pozivNaBrojZaduzenja</th>
+        <th>pozivNaBrojOdobrenja</th>
+        <th>modelZaduzenja</th>
+        <th>modelOdobrenja</th>
+        <th>iznos</th>
+        <th>duznik</th>
+        <th>primalac</th>
+        <th>datumNaloga</th>
+        <th>obradjen</th>
+        <th>duznik</th>
+
+    </tr>
+    #{list items:nalozi, as:'nalog'}
+
+    <tr>
+        <td class = "racunduznika">${nalog.racunduznika}</td>
+        <td class = "racunPoverioca">${nalog.racunPoverioca}</td>
+        <td class = "pozivNaBrojZaduzenja">${nalog.pozivNaBrojZaduzenja}</td>
+        <td class = "pozivNaBrojOdobrenja">${nalog.pozivNaBrojOdobrenja}</td>
+        <td class = "modelZaduzenja">${nalog.modelZaduzenja}</td>
+        <td class = "modelOdobrenja">${nalog.modelOdobrenja}</td>
+        <td class = "iznos">${nalog.iznos}</td>
+        <td class = "duznik">${nalog.duznik}</td>
+        <td class = "primalac">${nalog.primalac}</td>
+        <td class = "datumNaloga">${nalog.datumNaloga}</td>
+        <td class = "obradjen">${nalog.obradjen}</td>
+        <td style = "visibility: hidden; max-width: 0px" class = "id">${nalog.id}</td>
+    </tr>
+
+    #{/list}
+</table>
+
+#{set 'action'}
+#{if mode == 'add'}
+@{Racuni.add()}
+#{/if}
+
+#{elseif mode == 'edit'}
+@{Racuni.edit()}
+#{/elseif}
+
+#{elseif mode == 'remove'}
+@{Racuni.delete()}
+#{/elseif}
+
+#{else}
+@{PregledPlacanja.filter()}
+#{/else}
+#{/set}
+
+
+
+<div class = "panel">
+    <p>
+        <form action=${action} method="post">
+            #{field 'id'}
+            <input type = "hidden" name = "${field.name}" id = "${field.id}"/>
+            #{/}
+
+
+    <p>
+        #{field 'racunduznika'}
+        <label for = "${field.id}">racunduznika</label>
+        <input type = "text" name = "${field.name}" id = "${field.name}"/>
+        <span>#{error 'racunduznika' /}</span>
+        #{/}
+
+    </p>
+
+    <p>
+        #{field 'racunPoverioca'}
+        <label for = "${field.id}">racunPoverioca</label>
+        <input type = "text" name = "${field.name}" id = "${field.name}"/>
+        <span>#{error 'racunPoverioca' /}</span>
+        #{/}
+
+    </p>
+
+    <p>
+        #{field 'pozivNaBrojZaduzenja'}
+        <label for = "${field.id}">pozivNaBrojZaduzenja</label>
+        <input type = "text" name = "${field.name}" id = "${field.name}"/>
+        <span>#{error 'pozivNaBrojZaduzenja' /}</span>
+        #{/}
+
+    </p>
+
+    <p>
+        #{field 'pozivNaBrojOdobrenja'}
+        <label for = "${field.id}">pozivNaBrojOdobrenja</label>
+        <input type = "text" name = "${field.name}" id = "${field.name}"/>
+        <span>#{error 'pozivNaBrojOdobrenja' /}</span>
+        #{/}
+
+    </p>
+
+    <p>
+        #{field 'modelZaduzenja'}
+        <label for = "${field.id}">modelZaduzenja</label>
+        <input type = "text" name = "${field.name}" id = "${field.name}"/>
+        <span>#{error 'modelZaduzenja' /}</span>
+        #{/}
+
+    </p>
+
+    <p>
+        #{field 'modelOdobrenja'}
+        <label for = "${field.id}">modelOdobrenja</label>
+        <input type = "text" name = "${field.name}" id = "${field.name}"/>
+        <span>#{error 'modelOdobrenja' /}</span>
+        #{/}
+
+    </p>
+
+    <p>
+        #{field 'iznos'}
+        <label for = "${field.id}">iznos</label>
+        <input type = "text" name = "${field.name}" id = "${field.name}"/>
+        <span>#{error 'iznos' /}</span>
+        #{/}
+
+    </p>
+
+    <p>
+        #{field 'duznik'}
+        <label for = "${field.id}">duznik</label>
+        <input type = "text" name = "${field.name}" id = "${field.name}"/>
+        <span>#{error 'duznik' /}</span>
+        #{/}
+
+    </p>
+
+    <p>
+        #{field 'primalac'}
+        <label for = "${field.id}">primalac</label>
+        <input type = "text" name = "${field.name}" id = "${field.name}"/>
+        <span>#{error 'primalac' /}</span>
+        #{/}
+
+    </p>
+
+    <p>
+        #{field 'datumNaloga'}
+        <label for = "${field.id}">datumNaloga</label>
+        <input type = "text" name = "${field.name}" id = "${field.name}"/>
+        <span>#{error 'datumNaloga' /}</span>
+        #{/}
+
+    </p>
+
+    <p>
+        #{field 'obradjen'}
+        <label for = "${field.id}">obradjen</label>
+        <input type = "text" name = "${field.name}" id = "${field.name}"/>
+        <span>#{error 'obradjen' /}</span>
+        #{/}
+
+    </p>
+
+    <div id = "formActions">
+        <input type = "submit" value = "Potvrda" style="margin-left:6em"/>
+        <a href = "@{Delatnosti.show('')}" style="margin-left:1em">Rollback</a>
+    </div>
+
+    </form>
+    </p>
+</div>

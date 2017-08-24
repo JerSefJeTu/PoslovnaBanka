@@ -15,7 +15,6 @@ import play.mvc.Controller;
 public class RacunDetalji extends Controller {
 	
 	public static void show(long idRacuna){
-		
 		List<Nalog> naloziNaTeret = new ArrayList<Nalog>();
 		List<Nalog> naloziUKorist = new ArrayList<Nalog>();
 		Racun racun = Racun.find("id", idRacuna).first();
@@ -46,5 +45,6 @@ public class RacunDetalji extends Controller {
 
 		render(racun,naloziNaTeret,naloziUKorist);
 	}
+
 
 }
