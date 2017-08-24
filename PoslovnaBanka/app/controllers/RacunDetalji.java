@@ -45,6 +45,6 @@ public class RacunDetalji extends Controller {
 
 		render(racun,naloziNaTeret,naloziUKorist);
 	}
-
-
+	
+	
 }
