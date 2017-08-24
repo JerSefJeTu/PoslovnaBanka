@@ -28,7 +28,7 @@ Banka(1):
     adresaBanke: Bulevar Oslobodjenja 5
     nazivBanke: PrvaBanka
     obracunskiRacun: 16-66-99-88
-    sifraBanke: 1
+    sifraBanke: 100
     swiftKod: SOGYRSBG
     telefonBanke: 021777666
     mesto: 1
@@ -38,7 +38,7 @@ Banka(2):
     adresaBanke: Bulevar Evrope 52
     nazivBanke: DrugaBanka
     obracunskiRacun: 17-67-79-78
-    sifraBanke: 2
+    sifraBanke: 200
     swiftKod: EROYRSBG
     telefonBanke: 021887656
     mesto: 2
@@ -48,6 +48,8 @@ Clearing(1):
 
 Clearing(2):
     datumIVreme: 2015-12-14 15:30:30
+
+
 
 FizickoLice(1):
     jmbg: 1606995830174
@@ -73,6 +75,14 @@ PravnoLice(2):
     pib: 163916
     maticniBroj: 695874
     delatnost: 2
+
+Admin(3):
+    username: admin
+    password: admin
+    adresa: Zmaj Jovina 3
+    telefon: 0696699630
+    email: cika.jova.zmaj@gmail.rs
+    fax: faxFax
 
 Racun(1):
     brojRacuna: 200-123456-00
