@@ -33,7 +33,7 @@ public class Application extends Controller {
 			}
 
     		Racuni.show();
-    	}else{
+    	}else if (user instanceof FizickoLice){
     		FizickoLice klijent = (FizickoLice) user;
     		session.put("ime", klijent.ime);
     		session.put("prezime", klijent.prezime);
@@ -44,7 +44,9 @@ public class Application extends Controller {
     		for (Racun racun : klijent.racuni) {
 				System.out.println(racun.brojRacuna);
 			}
-    	}
+    	}else {
+			Admin.show("");
+		}
     	
     	Runnable runnable = new Runnable() {
 			
