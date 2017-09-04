@@ -46,5 +46,7 @@ public class RacunDetalji extends Controller {
 		render(racun,naloziNaTeret,naloziUKorist);
 	}
 	
-	
+	public static void admin_show(String mode){
+		render();
+	}
 }
