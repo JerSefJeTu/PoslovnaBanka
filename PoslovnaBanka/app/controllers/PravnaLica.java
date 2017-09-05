@@ -17,23 +17,28 @@ public class PravnaLica extends Controller {
             mode = "edit";
         render(pravnaLica, mode);
     }
-    /*public static void add(@Required String nazivMesta, int postanskiBroj) {
-        System.out.println(nazivMesta+" "+postanskiBroj);
+
+    public static void add(@Required String naziv, String pib, String maticniBroj, String username, String telefon, String adresa, String email, String fax) {
         if(validation.hasErrors()) {
-            for(Error error : validation.errors()) {
-                System.out.println(error.message());
-            }
+
             validation.keep();
             show("add");
         }else {
-            Mesto mesto=new Mesto();
-            mesto.naziv=nazivMesta;
-            mesto.postanskiBroj=postanskiBroj;
-            mesto.save();
+            PravnoLice pravnoLice =new PravnoLice();
+            pravnoLice.naziv = naziv;
+            pravnoLice.pib = pib;
+            pravnoLice.maticniBroj = maticniBroj;
+            pravnoLice.username = username;
+            pravnoLice.telefon = telefon;
+            pravnoLice.adresa = adresa;
+            pravnoLice.email = email;
+            pravnoLice.fax = fax;
+            pravnoLice.password = "12345";
+            pravnoLice.save();
             validation.keep();
-            show("add");
+            show("");
         }
-    }*/
+    }
 
     public static void filter(@Required String username){
         List<PravnoLice> pravnalica = PravnoLice.find("byUSERNAMELike", "%"+ username +"%").fetch();
@@ -41,11 +46,18 @@ public class PravnaLica extends Controller {
         renderTemplate("PravnaLica/show.html", pravnalica, mode);
     }
 
-    public static void edit(){
-   /*     Mesto mesto = Mesto.findById(id);
-        mesto.naziv=nazivMesta;
-        mesto.postanskiBroj = postanskiBroj;
-        mesto.save();*/
+    public static void edit(@Required String naziv, String pib, String maticniBroj, String username, String telefon, String adresa, String email, String fax, Long id){
+        PravnoLice pravnoLice = PravnoLice.findById(id);
+        pravnoLice.naziv = naziv;
+        pravnoLice.pib = pib;
+        pravnoLice.maticniBroj = maticniBroj;
+        pravnoLice.username = username;
+        pravnoLice.telefon = telefon;
+        pravnoLice.adresa = adresa;
+        pravnoLice.email = email;
+        pravnoLice.fax = fax;
+        pravnoLice.password = "12345";
+        pravnoLice.save();
         show("");
     }
     public static void delete(long id){

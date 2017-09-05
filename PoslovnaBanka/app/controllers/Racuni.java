@@ -22,7 +22,7 @@ public class Racuni extends Controller {
     }
 
     public static void filter(@Required String brojRacuna){
-        List<Racun> delatnosti = Racun.find("bybrojRacunaLike", "%"+ brojRacuna +"%").fetch();
+        List<Racun> delatnosti = Racun.find("byBROJ_RACUNALike", "%"+ brojRacuna +"%").fetch();
         String mode = "edit";
         renderTemplate("Racuni/admin_show.html", delatnosti, mode);
     }
@@ -39,4 +39,11 @@ public class Racuni extends Controller {
         racun.delete();
         show();
     }
+
+    public static void add(@Required String brojRacuna, String datumOtvaranja, String klijent){
+        System.out.println(brojRacuna);
+        System.out.println(datumOtvaranja);
+        System.out.println("k:"+klijent);
+    }
+
 }

@@ -5,13 +5,11 @@
     function sync(item) {
         brojRacuna = item.find(".brojRacuna").html();
         id = item.find(".id").html();
-        dnevnoStanjeRacuna = item.find(".dnevnoStanjeRacuna").html();
         klijent = item.find(".klijent").html();
         datumOtvaranja = item.find(".datumOtvaranja").html();
-        $("#sifraDelatnosti").val(sifraDelatnosti);
-        $("#nazivDelatnosti").val(nazivDelatnosti);
-        $("#id").val(id);
+        $("#brojRacuna").val(brojRacuna);
         $("#klijent").val(klijent);
+        $("#id").val(id);
         $("#datumOtvaranja").val(datumOtvaranja);
     }
 
@@ -36,7 +34,6 @@
 <table>
     <tr class = "header">
         <th>brojRacuna</th>
-        <th>dnevnoStanjeRacuna</th>
         <th>klijent</th>
         <th>datumOtvaranja</th>
 
@@ -45,7 +42,6 @@
 
     <tr>
         <td class = "brojRacuna">${racun.brojRacuna}</td>
-        <td class = "dnevnoStanjeRacuna">${racun.dnevnoStanjeRacuna}</td>
         <td class = "klijent">${racun.klijent}</td>
         <td class = "datumOtvaranja">${racun.datumOtvaranja}</td>
         <td style = "visibility: hidden; max-width: 0px" class = "id">${racun.id}</td>
@@ -92,15 +88,6 @@
     </p>
 
     <p>
-        #{field 'dnevnoStanjeRacuna'}
-        <label for = "${field.id}">dnevnoStanjeRacuna</label>
-        <input type = "text" name = "${field.name}" id = "${field.name}"/>
-        <span>#{error 'dnevnoStanjeRacuna' /}</span>
-        #{/}
-
-    </p>
-
-    <p>
         #{field 'klijent'}
         <label for = "${field.id}">klijent</label>
         <input type = "text" name = "${field.name}" id = "${field.name}"/>
@@ -120,7 +107,7 @@
 
     <div id = "formActions">
         <input type = "submit" value = "Potvrda" style="margin-left:6em"/>
-        <a href = "@{Delatnosti.show('')}" style="margin-left:1em">Rollback</a>
+        <a href = "@{Racuni.admin_show('')}" style="margin-left:1em">Rollback</a>
     </div>
 
     </form>

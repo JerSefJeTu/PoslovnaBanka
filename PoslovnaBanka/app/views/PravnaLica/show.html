@@ -63,9 +63,9 @@
     #{list items:pravnaLica, as:'pravnoLice'}
 
     <tr>
-        <td class = "ime">${pravnoLice.naziv}</td>
-        <td class = "prezime">${pravnoLice.pib}</td>
-        <td class = "jmbg">${pravnoLice.maticniBroj}</td>
+        <td class = "naziv">${pravnoLice.naziv}</td>
+        <td class = "pib">${pravnoLice.pib}</td>
+        <td class = "maticniBroj">${pravnoLice.maticniBroj}</td>
         <td class = "username">${pravnoLice.username}</td>
         <td class = "telefon">${pravnoLice.telefon}</td>
         <td class = "adresa">${pravnoLice.adresa}</td>
@@ -76,6 +76,24 @@
 
     #{/list}
 </table>
+
+#{set 'action'}
+#{if mode == 'add'}
+@{PravnaLica.add()}
+#{/if}
+
+#{elseif mode == 'edit'}
+@{PravnaLica.edit()}
+#{/elseif}
+
+#{elseif mode == 'remove'}
+@{PravnaLica.delete()}
+#{/elseif}
+
+#{else}
+@{PravnaLica.filter()}
+#{/else}
+#{/set}
 
 
 <div class = "panel">
@@ -160,7 +178,7 @@
 
     <div id = "formActions">
         <input type = "submit" value = "Potvrda" style="margin-left:6em"/>
-        <a href = "@{FizickaLica.show("")}" style="margin-left:1em">Rollback</a>
+        <a href = "@{PravnaLica.show("")}" style="margin-left:1em">Rollback</a>
     </div>
 
     </form>
