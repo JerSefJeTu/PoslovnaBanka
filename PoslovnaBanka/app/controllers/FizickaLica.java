@@ -18,36 +18,46 @@ public class FizickaLica extends Controller {
             mode = "edit";
         render(fizickaLica, mode);
     }
-    /*
-    public static void add(@Required String nazivMesta, int postanskiBroj) {
-        System.out.println(nazivMesta+" "+postanskiBroj);
+
+    public static void add(@Required String ime, String prezime, String username, String telefon, String adresa, String email, String fax, String jmbg) {
         if(validation.hasErrors()) {
-            for(Error error : validation.errors()) {
-                System.out.println(error.message());
-            }
+
             validation.keep();
             show("add");
         }else {
-            Mesto mesto=new Mesto();
-            mesto.naziv=nazivMesta;
-            mesto.postanskiBroj=postanskiBroj;
-            mesto.save();
+            FizickoLice fizickoLice =new FizickoLice();
+            fizickoLice.ime = ime;
+            fizickoLice.prezime = prezime;
+            fizickoLice.username = username;
+            fizickoLice.telefon = telefon;
+            fizickoLice.adresa = adresa;
+            fizickoLice.email = email;
+            fizickoLice.fax = fax;
+            fizickoLice.jmbg = jmbg;
+            fizickoLice.password = "12345";
+            fizickoLice.save();
             validation.keep();
             show("add");
         }
     }
-    */
+
     public static void filter(@Required String username){
         List<FizickoLice> fizickoLice = FizickoLice.find("byUSERNAMELike", "%"+ username +"%").fetch();
         String mode = "edit";
         renderTemplate("FizickaLica/show.html", fizickoLice, mode);
     }
 
-    public static void edit(){
-        /*Mesto mesto = Mesto.findById(id);
-        mesto.naziv=nazivMesta;
-        mesto.postanskiBroj = postanskiBroj;
-        mesto.save();*/
+    public static void edit(@Required String ime, String prezime, String username, String telefon, String adresa, String email, String fax, String jmbg, Long id){
+        FizickoLice fizickoLice = FizickoLice.findById(id);
+        fizickoLice.ime = ime;
+        fizickoLice.prezime = prezime;
+        fizickoLice.username = username;
+        fizickoLice.telefon = telefon;
+        fizickoLice.adresa = adresa;
+        fizickoLice.email = email;
+        fizickoLice.fax = fax;
+        fizickoLice.jmbg = jmbg;
+        fizickoLice.save();
         show("");
     }
 
