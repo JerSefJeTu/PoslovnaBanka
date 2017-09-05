@@ -56,7 +56,7 @@ public class PregledPlacanja extends Controller {
 	public static void filter(@Required String racunduznika){
 		List<Nalog> nalozi = Nalog.find("byracunduznikaLike", "%"+ racunduznika +"%").fetch();
 		String mode = "edit";
-		renderTemplate("PregledPlacanja/admin_show.html", nalozi, mode);
+		renderTemplate("PregledPlacanja/show.html", nalozi, mode);
 	}
 
 	public static void admin_show(String mode){

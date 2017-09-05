@@ -1,6 +1,5 @@
 #{extends 'standardForm.html' /}
-#{set title:'Banka' /}
-
+#{set title:'Banke' /}
 <script>
     function sync(item){
         id = item.find(".id").html();
@@ -20,12 +19,8 @@
         $("#swiftKod").val(swiftKod);
         $("#obracunskiRacun").val(obracunskiRacun);
         $("#mesto").val(mesto);
+        $("#id").val(id);
     }
-    /* function nextForm(id){
-        $(location).attr('href', '/NaseljenaMesta/filter?id=&stavkeMestoa=&datumVazenja=&postanskiBroj=&drzava=' +id);
-    } */
-
-
 </script>
 
 <p>
@@ -42,36 +37,32 @@
 </ul>
 </p>
 
-
-
 <h1>Banke</h1>
-
 <table>
-    <tr class = "header">
-        <th>sifraBanke</th>
-        <th>nazivBanke</th>
-        <th>adresaBanke</th>
-        <th>telefonBanke</th>
-        <th>PIB</th>
-        <th>swiftKod</th>
-        <th>obracunskiRacun</th>
-    </tr>
-    #{list items:banke, as:'banka'}
+<tr class = "header">
+    <th>sifraBanke</th>
+    <th>nazivBanke</th>
+    <th>adresaBanke</th>
+    <th>telefonBanke</th>
+    <th>PIB</th>
+    <th>swiftKod</th>
+    <th>obracunskiRacun</th>
+</tr>
+#{list items:banke, as:'banka'}
 
-    <tr>
-        <td class = "sifraBanke">${banka.sifraBanke}</td>
-        <td class = "nazivBanke">${banka.nazivBanke}</td>
-        <td class = "adresaBanke">${banka.adresaBanke}</td>
-        <td class = "telefonBanke">${banka.telefonBanke}</td>
-        <td class = "PIB">${banka.PIB}</td>
-        <td class = "swiftKod">${banka.swiftKod}</td>
-        <td class = "obracunskiRacun">${banka.obracunskiRacun}</td>
-        <td style = "visibility: hidden; max-width: 0px" class = "id">${banka.id}</td>
-    </tr>
+<tr>
+    <td class = "sifraBanke">${banka.sifraBanke}</td>
+    <td class = "nazivBanke">${banka.nazivBanke}</td>
+    <td class = "adresaBanke">${banka.adresaBanke}</td>
+    <td class = "telefonBanke">${banka.telefonBanke}</td>
+    <td class = "PIB">${banka.PIB}</td>
+    <td class = "swiftKod">${banka.swiftKod}</td>
+    <td class = "obracunskiRacun">${banka.obracunskiRacun}</td>
+    <td style = "visibility: hidden; max-width: 0px" class = "id">${banka.id}</td>
+</tr>
 
-    #{/list}
+#{/list}
 </table>
-
 #{set 'action'}
 #{if mode == 'add'}
 @{Banke.add()}
@@ -89,6 +80,7 @@
 @{Banke.filter()}
 #{/else}
 #{/set}
+
 
 
 <div class = "panel">
@@ -159,8 +151,6 @@
         #{/}
 
     </p>
-
-
 
     <div id = "formActions">
         <input type = "submit" value = "Potvrda" style="margin-left:6em"/>

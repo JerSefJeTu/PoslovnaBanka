@@ -1,10 +1,8 @@
 package controllers;
 
-import play.*;
 import play.mvc.*;
 import play.mvc.Scope.Session;
 
-import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -32,14 +30,14 @@ public class Application extends Controller {
 				System.out.println(racun.brojRacuna);
 			}
 
-    		Racuni.show();
+			Racuni.show();
     	}else if (user instanceof FizickoLice){
     		FizickoLice klijent = (FizickoLice) user;
     		session.put("ime", klijent.ime);
     		session.put("prezime", klijent.prezime);
     		session.put("naziv", "");
     		session.put("idKlijenta", klijent.id);
-    		Racuni.show();
+			Racuni.show();
     		
     		for (Racun racun : klijent.racuni) {
 				System.out.println(racun.brojRacuna);
