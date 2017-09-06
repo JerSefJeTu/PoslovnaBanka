@@ -2,8 +2,6 @@ package models;
 
 import java.util.Date;
 
-import play.data.validation.Required;
-
 public class NalogDTO {
 
 	   public String racunduznika;

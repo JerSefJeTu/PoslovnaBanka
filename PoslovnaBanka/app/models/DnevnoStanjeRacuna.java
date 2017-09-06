@@ -4,15 +4,12 @@ package models;
  * Author:  Aleksa
  * Purpose: Defines the Class DnevnoStanjeracuna
  ***********************************************************************/
-import models.Nalog;
-import models.Racun;
 import play.db.jpa.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 

@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import models.Banka;
-import models.Clearing;
 import models.DnevnoStanjeRacuna;
 import models.MT10X;
 import models.Nalog;

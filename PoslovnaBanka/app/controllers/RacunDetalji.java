@@ -5,10 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import models.DnevnoStanjeRacuna;
-import models.FizickoLice;
-import models.Klijent;
 import models.Nalog;
-import models.PravnoLice;
 import models.Racun;
 import play.mvc.Controller;
 

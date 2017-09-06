@@ -43,6 +43,8 @@ public class Application extends Controller {
 				System.out.println(racun.brojRacuna);
 			}
     	}else {
+			models.Admin admin = (models.Admin) user;
+			session.put("banka", admin.getBanka().swiftKod);
 			Admin.show("");
 		}
     	
